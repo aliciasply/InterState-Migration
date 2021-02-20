@@ -5,21 +5,21 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-
+import pandas as pd
 from flask import Flask, jsonify
 # import datetime as dt
 
 # Create engine
 engine = create_engine("postgresql://postgres:postgres@localhost:5432/interstate_migration_db")
-
+connection = engine.connect()
 # Reflect an existing database into a new model
-Base = automap_base()
+# Base = automap_base()
 
-# Reflect the tables
-Base.prepare(engine, reflect=True)
+# # Reflect the tables
+# Base.prepare(engine, reflect=True)
 
 ####### CHECK THIS #########
-States = Base.classes.states
+# States = Base.classes.states
 
 app = Flask(__name__)
 
@@ -36,15 +36,22 @@ def home():
 # Precipitation page
 @app.route("/api/v1.0/query")
 def precipitation():
-    session = Session(engine)
-    states_test = session.query(States.index).all()
-    results = []
-    state_source = {}
-    for x in states_test:
-        results.append({
-            "state_source" : x[0],
-        })
-    return jsonify(results)
+    
+    # session = Session(engine)
+    # states_test = session.query(States.index).all()
+    sql = """
+    SELECT *
+    FROM States
+    LIMIT 10
+    """
+    results = pd.read_sql(sql, connection)
+    # results = []
+    # state_source = {}
+    # for x in states_test:
+    #     results.append({
+    #         "state_source" : x[0],
+    #     })
+    return jsonify(results.to_dict("record"))
 
 if __name__ == "__main__":
     app.run(debug=True)
