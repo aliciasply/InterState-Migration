@@ -33,17 +33,27 @@ def home():
         f'/api/v1.0/query<br/>'
     )
 
-# Precipitation page
+# Data visualization
 @app.route("/api/v1.0/query")
-def precipitation():
+def visualization():
     
     # session = Session(engine)
     # states_test = session.query(States.index).all()
+
+    ###### This works ######
+    # sql = """
+    # SELECT *
+    # FROM States
+    # LIMIT 10
+    # """
+    ##########################
+
     sql = """
     SELECT *
     FROM States
-    LIMIT 10
     """
+
+
     results = pd.read_sql(sql, connection)
     # results = []
     # state_source = {}
