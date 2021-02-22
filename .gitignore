@@ -130,3 +130,8 @@ dmypy.json
 .DS_Store
 login.py
 config.js
+
+# Temp
+migration_map.js
+migration_map.html
+migrationmapstyle.css
