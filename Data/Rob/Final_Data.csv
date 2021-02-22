@@ -1,0 +1,51 @@
+state,abbr,city,temp,m_income,poverty,commute,old_health,health
+Alabama,AL,Birmingham,63.2,55935.0,16.1,24.7,-0.838,1.115
+Alaska,AK,Anchorage,14.7,78038.0,10.6,18.8,-0.115,1.571
+Arizona,AZ,Phoenix,72.0,70080.0,13.9,25.3,-0.105,1.578
+Arkansas,AR,Little Rock,59.0,54322.0,16.4,21.7,-0.672,1.22
+California,CA,Los Angeles,76.8,78002.0,13.0,29.3,0.431,1.916
+Colorado,CO,Denver,57.2,72400.0,9.6,25.5,0.588,2.015
+Connecticut,CT,Bridgeport,33.5,87005.0,9.7,26.3,0.799,2.148
+Delaware,DE,Wilmington,63.1,74051.0,11.0,25.8,-0.109,1.575
+Florida,FL,Jacksonville,75.1,58150.0,13.1,27.4,-0.087,1.589
+Georgia,GA,Atlanta,61.5,56480.0,14.1,28.4,-0.394,1.395
+Hawaii,HI,Honolulu,77.8,88101.0,9.3,27.4,0.882,2.2
+Idaho,ID,Boise,44.6,65326.0,11.9,20.7,0.349,1.864
+Illinois,IL,Chicago,36.0,74030.0,12.4,29.0,0.06,1.682
+Indiana,IN,Indianapolis,36.8,66882.0,12.8,23.6,-0.432,1.371
+Iowa,IA,Des Moines,39.5,65635.0,11.0,19.1,0.336,1.856
+Kansas,KS,Wichita,58.6,73110.0,11.6,19.3,0.036,1.667
+Kentucky,KY,Louisville,42.1,55520.0,16.7,23.3,-0.62,1.253
+Louisiana,LA,New Orleans,69.5,51760.0,18.8,25.5,-1.021,1.0
+Maine,ME,Portland,49.4,65800.0,11.3,24.0,0.349,1.864
+Maryland,MD,Baltimore,34.5,95310.0,8.9,32.9,0.306,1.837
+Massachusetts,MA,Boston,38.3,87264.0,9.8,29.7,0.866,2.19
+Michigan,MI,Detroit,35.1,63769.0,14.0,24.5,-0.194,1.521
+Minnesota,MN,Minneapolis,38.8,81260.0,9.2,23.5,0.665,2.063
+Mississippi,MS,Jackson,39.2,44092.0,19.8,24.6,-1.01,1.007
+Missouri,MO,Kansas City,56.9,60010.0,13.1,23.6,-0.345,1.426
+Montana,MT,Billings,51.8,60000.0,12.4,18.0,0.295,1.83
+Nebraska,NE,Omaha,45.1,73000.0,10.6,18.6,0.379,1.883
+Nevada,NV,Las Vegas,61.8,70627.0,12.1,24.3,-0.267,1.475
+New Hampshire,NH,Manchester,44.1,86800.0,7.2,27.3,0.692,2.08
+New Jersey,NJ,Newark,34.0,87352.0,9.8,31.7,0.46,1.934
+New Mexico,NM,Albuquerque,51.8,53021.0,18.6,22.1,-0.204,1.515
+New York,NY,New York City,34.6,71300.0,13.9,33.3,0.476,1.944
+North Carolina,NC,Charlotte,48.2,60300.0,13.7,24.5,-0.191,1.523
+North Dakota,ND,Fargo,41.8,70000.0,10.2,17.1,0.416,1.906
+Ohio,OH,Columbus,37.0,64782.0,13.6,23.5,-0.424,1.376
+Oklahoma,OK,Oklahoma City,61.9,59303.0,15.0,21.7,-0.744,1.175
+Oregon,OR,Portland,49.4,73900.0,12.4,23.7,0.295,1.83
+Pennsylvania,PA,Philadelphia,34.3,69913.0,12.0,26.9,-0.014,1.635
+Rhode Island,RI,Providence,37.6,70002.0,11.8,24.8,0.382,1.885
+South Carolina,SC,Charleston,64.3,61476.0,14.0,24.6,-0.567,1.286
+South Dakota,SD,Sioux Falls,41.7,63600.0,12.3,17.0,0.067,1.686
+Tennessee,TN,Nashville,53.6,56615.0,14.4,25.0,-0.566,1.287
+Texas,TX,Houston,72.4,67280.0,13.7,26.4,-0.286,1.463
+Utah,UT,Salt Lake City,43.0,84517.0,9.0,21.7,0.702,2.086
+Vermont,VT,Burlington,34.0,73800.0,10.5,22.9,0.719,2.097
+Virginia,VA,Virginia Beach,56.4,81000.0,10.1,28.4,0.305,1.836
+Washington,WA,Seattle,49.0,82175.0,10.1,27.6,0.584,2.012
+West Virginia,WV,Charleston,64.3,53520.0,17.5,25.8,-0.603,1.264
+Wisconsin,WI,Milwaukee,33.6,67163.0,10.9,22.0,0.22,1.783
+Wyoming,WY,Cheyenne,47.6,64587.0,10.7,17.8,0.21,1.776
