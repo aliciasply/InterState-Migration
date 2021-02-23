@@ -34,9 +34,13 @@ def home():
         f'/api/v1.0/query<br/>'
     )
 
+
+# Make new routes for top 5 states then order by and group by state name
+
 # Data visualization
 @app.route("/api/v1.0/query")
-def visualization():
+@app.route("/api/v1.0/query/<state>")
+def visualization(state=""):
     
     # session = Session(engine)
     # states_test = session.query(States.index).all()
@@ -51,10 +55,15 @@ def visualization():
 
     sql = """
     SELECT *
-    FROM States
+    FROM states_clean
     """
+    if state != "":
+        sql += f'''
+         WHERE "To_State"='{state}'
+         '''
+    sql += " LIMIT 10"
 
-
+    print(sql)
     results = pd.read_sql(sql, connection)
     # results = []
     # state_source = {}
@@ -62,7 +71,7 @@ def visualization():
     #     results.append({
     #         "state_source" : x[0],
     #     })
-    return jsonify(results.to_dict("record"))
+    return jsonify(results.to_dict())
 
 if __name__ == "__main__":
     app.run(debug=True)
