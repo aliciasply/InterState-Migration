@@ -7,10 +7,11 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import pandas as pd
 from flask import Flask, jsonify
+from config import user, pw, port
 # import datetime as dt
 
 # Create engine
-engine = create_engine("postgresql://postgres:postgres@localhost:5432/interstate_migration_db")
+engine = create_engine(f'postgresql://{user}:{pw}@localhost:{port}/interstate_migration_db')
 connection = engine.connect()
 # Reflect an existing database into a new model
 # Base = automap_base()
