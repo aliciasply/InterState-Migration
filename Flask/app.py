@@ -6,7 +6,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import pandas as pd
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from config import user, pw, port
 # import datetime as dt
 
@@ -28,17 +28,19 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     print("Server received request for 'Home' page...")
-    return (
-        f"<h1>Welcome to PRISM, an analysis of Inter-state Migration!</h1><br/><br/>"
-        f'<b>Available Routes:</b><br/><br/>'
-        f'/api/v1.0/query<br/>'
-    )
+    # return (
+    #     f"<h1>Welcome to PRISM, an analysis of Inter-state Migration!</h1><br/><br/>"
+    #     f'<b>Available Routes:</b><br/><br/>'
+    #     f'/api/v1.0/query<br/>'
+    # )
+    return render_template("Alexei.html")
 
 
 # Make new routes for top 5 states then order by and group by state name
 
 # Data visualization
 @app.route("/api/v1.0/query")
+@app.route("/api/v1.0/query/origin/<state>")
 @app.route("/api/v1.0/query/<state>")
 def visualization(state=""):
     
@@ -71,7 +73,7 @@ def visualization(state=""):
     #     results.append({
     #         "state_source" : x[0],
     #     })
-    return jsonify(results.to_dict())
+    return jsonify(results.to_dict("records"))
 
 if __name__ == "__main__":
     app.run(debug=True)
