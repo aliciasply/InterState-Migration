@@ -32,25 +32,37 @@ legend.onAdd = function(map) {
 };
 legend.addTo(myMap)
 
-// Need to get state boundaries. Read from JSON (GeoJSON better), then combine into one interactive visualization
+///////////////////////////////////////////////////////////////////
+// Keep Keep Keep
+// Need to get state boundaries. Read from JSON (GeoJSON better),
+// then combine into one interactive visualization.
+// Load dataset first, then load boundary data
 /*
 d3.json(url_1).then(data => {
   d3.json(states_url).then(states_data =>{
     states_data.forEach(d => {
-      d.extra = data.features.map(x=>x.name=d.name)
+      d.extra = data.features.map(x => x.name=d.name)
     });
 
   });
 
 });
-
-
 */
+///////////////////////////////////////////////////////////////////
+
+stateBoundaries = "https://raw.githubusercontent.com/loganpowell/census-geojson/master/GeoJSON/5m/2019/state.json";
+migData = "../Data/Justin/in_sorted.csv"
+
+//Test
+// Load dataset first, then load boundary data
+d3.json(stateBoundaries, function(boundaries) {
+  console.log(boundaries)
+  d3.csv(migData, function(states) {
+    console.log(states)
+  })
+})
 
 
-// Url for analysis
-// https://eric.clst.org/tech/usgeojson/
-const link = "us_states_outline.json"
 
 // Function for returning colors
 function getColor(d) {
@@ -75,7 +87,7 @@ function style(feature) {
     };
 }
 
-L.geoJson(data, {style: style}).addTo(map);
+// L.geoJson(data, {style: style}).addTo(map);
 
 
 // Our style object
@@ -86,11 +98,24 @@ var mapStyle = {
     weight: 1.5
   };
 
-d3.json(link, function(data) {
-    // Creating a geoJSON layer with the retrieved data
-    L.geoJson(data, {
-      // Passing in our style object
-      style: mapStyle
-    }).addTo(myMap);
-  });
 
+////////////////////////////////////////////////////
+/*/* D3 using geoJson layer /*/
+// d3.json(link, function(data) {
+//     // Creating a geoJSON layer with the retrieved data
+//     L.geoJson(data, {
+//       // Passing in our style object
+//       style: mapStyle
+//     }).addTo(myMap);
+//   });
+/////////////////////////////////////////////////////
+
+
+
+
+
+// Url for analysis
+////////////////////////////////////////
+// https://eric.clst.org/tech/usgeojson/
+// const link = "state_boundaries.json"
+////////////////////////////////////////
