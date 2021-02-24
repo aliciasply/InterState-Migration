@@ -1,9 +1,18 @@
-// Create our initial map object
+// Layers to apply to map
+var layers = {
+  inbound: new L.LayerGroup(),
+  outbound: new L.LayerGroup()
+};
+
+// Create initial map object
 var myMap = L.map("migrationmapid", {
     center: [38.5003668,-99.5509956],
-    zoom: 5
+    zoom: 5,
+    layers: [
+      layers.inbound,
+      layers.outbound,
+    ]
   });
-
 
 // Add a tile layer to map (background map image)
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -15,22 +24,23 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: API_KEY
 }).addTo(myMap);
 
-
-// Map legend
-var legend = L.control({ position: "bottomright"});
-legend.onAdd = function(map) {
-    var div = L.DomUtil.create("div", "legend");
-    div.innerHTML += "<h4>Magnitude</h4>"
-    div.innerHTML += '<i style="background: #00ff00"></i><span>-10-10</span><br>';
-    div.innerHTML += '<i style="background: #ccff66"></i><span>10-30</span><br>';
-    div.innerHTML += '<i style="background: #ffcc66"></i><span>30-50</span><br>';
-    div.innerHTML += '<i style="background: #ffcc00"></i><span>50-70</span><br>';
-    div.innerHTML += '<i style="background: #ff9900"></i><span>70-90</span><br>';
-    div.innerHTML += '<i style="background: #ff3300"></i><span>90+</span><br>';
-
-    return div;
+// Style object for migration in
+var mapStyleIn = {
+  color: "black",
+  fillColor: "blue",
+  fillOpacity: 0.5,
+  weight: 1.5
 };
-legend.addTo(myMap)
+
+// Style object for migration out
+var mapStyleOut = {
+  color: "black",
+  fillColor: "red",
+  fillOpacity: 0.5,
+  weight: 1.5
+};
+
+
 
 ///////////////////////////////////////////////////////////////////
 // Keep Keep Keep
@@ -51,54 +61,58 @@ d3.json(url_1).then(data => {
 ///////////////////////////////////////////////////////////////////
 
 stateBoundaries = "https://raw.githubusercontent.com/loganpowell/census-geojson/master/GeoJSON/5m/2019/state.json";
-migCsv = "../Data/Justin/in_top5.csv"
+migCsv = "../Data/Justin/top5_in_out.csv"
 
 
 
-// Example: An array containing each city's name, location, and population
-var cities = [{
-  location: [40.7128, -74.0059],
-  name: "New York",
-  population: "8,550,405",
-  image: "https://regenaxe.files.wordpress.com/2019/02/lower-manhattan-skyline.jpg"
-},
-{
-  location: [41.8781, -87.6298],
-  name: "Chicago",
-  population: "2,720,546",
-  image: "https://hotelemc2.com/wp-content/uploads/2018/02/Why-Chicago-is-the-Best-City-in-the-World.png"
-}];
+var overlays = {
+  "Inbound Migration": layers.inbound,
+  "Outbound Migration": layers.outbound,
+}
+L.control.layers(null, overlays).addTo(myMap)
 
-/////////// Ex from k
-/*
-//// Boundary////
-// d3.json(url_1).then(data => {
-  
-//   d3.json(states_url).then(states_data =>{
-//     states_data.forEach(d => {
-//       d.extra = data.features.map(x => x.name=d.name)
-//     });
 
-//   });
-
-// });
-*/
 /////////// Ex from k
 
 ///////// Test for matching ex from k
 d3.json(stateBoundaries, function(boundaries) {
+  console.log(boundaries)
   var stateFeature = boundaries.features
-  console.log(stateFeature)
+  // console.log(stateFeature)
   //// CSV dataset////
   d3.csv(migCsv, function(migData) {
     // Iterate through boundary data
     console.log(migData)
-    filteredStates = ["Florida", "Texas", "California", "North Carolina", "Arizona"]
-    filteredStates.forEach(element => {
-      var test = stateFeature.filter(d => d===element)
-      console.log(test)
-    })
+    top5In = migData.filter(m => m.indicator==="in")
+    top5Out = migData.filter(m => m.indicator==="out")
+    console.log(top5In)
+    console.log(top5Out)
+    top5In.forEach(element => {
+      
+      var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
+      console.log(filteredStates)
+      filteredStates[0]['properties']['MigrantCount'] = element.migrants
+       
+      L.geoJSON(filteredStates, {
+        style: mapStyleIn,
+        onEachFeature: function(feature, layer, element) {
+          layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Inbound:</b> " + feature.properties.MigrantCount)}
+           
 
+      }).addTo(layers["inbound"]);})
+    top5Out.forEach(element => {
+        var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
+        console.log(filteredStates)
+        L.geoJSON(filteredStates, {
+          style: mapStyleOut,
+          onEachFeature: function(feature, layer, element) {
+            layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Outbound:</b> " + feature.properties.MigrantCount)}
+        }).addTo(layers['outbound']);
+    })
+  
+
+
+    
     // boundaries.features.forEach(d => {
     //   var extra = boundaries.features.properties.map(x => x.name=d.name)
     //   console.log(d)
@@ -138,39 +152,7 @@ d3.json(stateBoundaries, function(boundaries) {
 //////////////////// Shows pins on map
 
 
-// Function for returning colors
-function getColor(d) {
-    return d > 1000 ? '#800026' :
-           d > 500  ? '#BD0026' :
-           d > 200  ? '#E31A1C' :
-           d > 100  ? '#FC4E2A' :
-           d > 50   ? '#FD8D3C' :
-           d > 20   ? '#FEB24C' :
-           d > 10   ? '#FED976' :
-                      '#FFEDA0';
-};
-
-function style(feature) {
-    return {
-        fillColor: getColor(feature.properties.density),
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-}
-
 // L.geoJson(data, {style: style}).addTo(map);
-
-
-// Our style object
-var mapStyle = {
-    color: "white",
-    fillColor: "pink",
-    fillOpacity: 0.5,
-    weight: 1.5
-  };
 
 
 ////////////////////////////////////////////////////

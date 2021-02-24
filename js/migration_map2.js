@@ -90,32 +90,17 @@ d3.json(stateBoundaries, function(boundaries) {
   var stateFeature = boundaries.features
   console.log(stateFeature)
   //// CSV dataset////
+  filteredStates = ["Florida", "Texas", "California", "North Carolina", "Arizona"]
   d3.csv(migCsv, function(migData) {
-    // Iterate through boundary data
-    console.log(migData)
-//     filteredStates = ["Florida", "Texas", "California", "North Carolina", "Arizona"]
-//     for (i = 0; i < filteredStates.length; i++) {
-//       var coordinates = stateFeature.geometry.coordinates
-//       var stateName = stateFeature.properties.name
-//       filteredStates(element => 
-//       var extra = stateFeature.filter(d => d.properties.name===element)
-//       console.log(extra)
-
-
-
-//     })
-
-//     // boundaries.features.forEach(d => {
-//     //   var extra = boundaries.features.properties.map(x => x.name=d.name)
-//     //   console.log(d)
-//     })
-    
-      
-//   // }).addTo(myMap)
-//       // Store as list of dictionaries, then .forEach add to map
-//       // var stateName = boundaries.features.properties.stateName
-//       // var bBox = boundaries.features
-// });
+    for (i = 0; i < filteredStates.length; i++) {
+      var coordinates = stateFeature.geometry.coordinates
+      var stateName = stateFeature.properties.name
+      filteredStates(element => {
+        var extra = stateFeature.filter(d => d.properties.name===element)
+        console.log(extra)
+      })
+    })
+});
 ///////// Test for matching ex from k
 
 
