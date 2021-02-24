@@ -1,10 +1,9 @@
-// Layers to apply to map
 var layers = {
   inbound: new L.LayerGroup(),
   outbound: new L.LayerGroup()
 };
 
-// Create initial map object
+// Create our initial map object
 var myMap = L.map("migrationmapid", {
     center: [38.5003668,-99.5509956],
     zoom: 5,
@@ -13,6 +12,7 @@ var myMap = L.map("migrationmapid", {
       layers.outbound,
     ]
   });
+
 
 // Add a tile layer to map (background map image)
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -24,7 +24,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: API_KEY
 }).addTo(myMap);
 
-// Style object for migration in
+// Style object
 var mapStyleIn = {
   color: "black",
   fillColor: "blue",
@@ -32,7 +32,6 @@ var mapStyleIn = {
   weight: 1.5
 };
 
-// Style object for migration out
 var mapStyleOut = {
   color: "black",
   fillColor: "red",
@@ -40,7 +39,21 @@ var mapStyleOut = {
   weight: 1.5
 };
 
+// Map legend
+var legend = L.control({ position: "bottomright"});
+legend.onAdd = function(map) {
+    var div = L.DomUtil.create("div", "legend");
+    div.innerHTML += "<h4>Magnitude</h4>"
+    div.innerHTML += '<i style="background: #00ff00"></i><span>-10-10</span><br>';
+    div.innerHTML += '<i style="background: #ccff66"></i><span>10-30</span><br>';
+    div.innerHTML += '<i style="background: #ffcc66"></i><span>30-50</span><br>';
+    div.innerHTML += '<i style="background: #ffcc00"></i><span>50-70</span><br>';
+    div.innerHTML += '<i style="background: #ff9900"></i><span>70-90</span><br>';
+    div.innerHTML += '<i style="background: #ff3300"></i><span>90+</span><br>';
 
+    return div;
+};
+legend.addTo(myMap)
 
 ///////////////////////////////////////////////////////////////////
 // Keep Keep Keep
@@ -88,25 +101,16 @@ d3.json(stateBoundaries, function(boundaries) {
     console.log(top5In)
     console.log(top5Out)
     top5In.forEach(element => {
-      
       var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
       console.log(filteredStates)
-      filteredStates[0]['properties']['MigrantCount'] = element.migrants
-       
       L.geoJSON(filteredStates, {
         style: mapStyleIn,
-        onEachFeature: function(feature, layer, element) {
-          layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Inbound:</b> " + feature.properties.MigrantCount)}
-           
-
       }).addTo(layers["inbound"]);})
     top5Out.forEach(element => {
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
         console.log(filteredStates)
         L.geoJSON(filteredStates, {
           style: mapStyleOut,
-          onEachFeature: function(feature, layer, element) {
-            layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Outbound:</b> " + feature.properties.MigrantCount)}
         }).addTo(layers['outbound']);
     })
   
@@ -166,12 +170,3 @@ d3.json(stateBoundaries, function(boundaries) {
 //   });
 /////////////////////////////////////////////////////
 
-
-
-
-
-// Url for analysis
-////////////////////////////////////////
-// https://eric.clst.org/tech/usgeojson/
-// const link = "state_boundaries.json"
-////////////////////////////////////////
