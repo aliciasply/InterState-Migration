@@ -15,7 +15,7 @@ var width = svgWidth - margin.right - margin.left;
 var height = svgHeight - margin.top - margin.bottom;
 
 //append a div classed chart to the scatter element
-var chart = d3.select("#scatter").append("div").classed("chart", true);
+var chart = d3.select("#chart").append("div").classed("chart", true);
 
 
 // append an svg element to the chart with appropriate height and width
