@@ -1,7 +1,9 @@
 // Layers to apply to map
 var layers = {
     inbound: new L.LayerGroup(),
-    outbound: new L.LayerGroup()
+    outbound: new L.LayerGroup(),
+    piechartin: new L.LayerGroup(),
+    piechartout: new L.LayerGroup()
 };
   
 // Create initial map object
@@ -43,11 +45,18 @@ var mapStyleOut = {
 // Data sources
 stateBoundaries = "https://raw.githubusercontent.com/loganpowell/census-geojson/master/GeoJSON/5m/2019/state.json";
 migCsv = "../Data/Justin/top10_in_out.csv"
-  
+
+// var baseMaps = {
+//   "Inbound": grayscale,
+//   "Outbound": streets
+// };
 
 var overlays = {
     "Inbound Migration": layers.inbound,
+    "Inbound by Generation": layers.piechartin,
     "Outbound Migration": layers.outbound,
+    "Outbound by Generation": layers.piechartout,
+    
 }
 L.control.layers(null, overlays).addTo(myMap)
   
@@ -72,11 +81,11 @@ d3.json(stateBoundaries, function(boundaries) {
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
         // console.log(filteredStates)
 
-        // Migrants in JSON
+        // Migrants JSON
         filteredStates[0]['properties']['MigrantCountIn'] = element.migrants
         filteredMigrants = filteredStates[0]['properties']['MigrantCountIn']
         
-        // Generations in JSON
+        // Generations JSON
         filteredStates[0]['properties']['MillenialsCountIn'] = element.millenials
         filteredMillenials = filteredStates[0]['properties']['MillenialsCountIn']
 
@@ -86,7 +95,7 @@ d3.json(stateBoundaries, function(boundaries) {
         filteredStates[0]['properties']['BoomersCountIn'] = element.boomers
         filteredBoomers = filteredStates[0]['properties']['BoomersCountIn']
 
-        // LatLng in JSON
+        // LatLng JSON
         filteredStates[0]['properties']['Lat'] = element.lat
         filteredStates[0]['properties']['Lng'] = element.lng
         filteredLat = filteredStates[0]['properties']['Lat']
@@ -113,9 +122,9 @@ d3.json(stateBoundaries, function(boundaries) {
         L.piechartMarker(
           L.latLng([filteredLat, filteredLng]),
           {
-              radius: 50,
+              radius: 30,
               data: [
-                  { name: 'Millenials (25-40yo)', value: element.millenials },
+                  { name: 'Millenials (25-40yo)', value: element.millenials, },
                   { name: 'Gen X (41-56)', value: element.genx },
                   { name: 'Baby Boomers (57-75)', value: element.boomers }
               ]
@@ -123,7 +132,7 @@ d3.json(stateBoundaries, function(boundaries) {
            + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
             + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
             + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
-          ).addTo(layers["inbound"]);
+          ).addTo(layers["piechartin"]);
 
 
         ////////// THIS WORKS ////////////////////////
@@ -167,6 +176,7 @@ d3.json(stateBoundaries, function(boundaries) {
         filteredStates[0]['properties']['MillenialsCountOut'] = element.millenials
         filteredStates[0]['properties']['GenXCountOut'] = element.genx
         filteredStates[0]['properties']['BoomersCountOut'] = element.boomers
+        
 
         L.geoJSON(filteredStates, {
             style: mapStyleOut,
