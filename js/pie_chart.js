@@ -84,25 +84,28 @@ d3.json(stateBoundaries, function(boundaries) {
         L.geoJSON(filteredStates, {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
-            layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Inbound:</b> " + feature.properties.MigrantCountIn)}
+            layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
+            + "<br><b>Total Migrants In:</b> " + feature.properties.MigrantCountIn 
+            + "<br><b>Millenials:</b> " + Math.round((feature.properties.MillenialsCountIn/feature.properties.MigrantCountIn)*100) + "%" 
+            + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountIn/feature.properties.MigrantCountIn)*100) + "%"
+            + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountIn/feature.properties.MigrantCountIn)*100) + "%")}
              
         // Add geoJSON to inbound layer
         }).addTo(layers["inbound"])
-
-        L.piechartMarker(
-            L.latLng([37.683, -122.4536]),
-            {
-                radius: 50,
-                data: [
-                    { name: 'Millenials (25-40yo)', value: feature.properties.MillenialsCountIn },
-                    { name: 'Gen X (41-56)', value: feature.properties.GenXCountIn },
-                    { name: 'Baby Boomers (57-75)', value: feature.properties.BoomersCountIn }
-                ]
-            }).addTo(layers["inbound"]);
-
         
-    
-    
+        // Pie chart
+        // L.piechartMarker(
+        //     L.latLng([37.683, -122.4536]),
+        //     {
+        //         radius: 50,
+        //         data: [
+        //             { name: 'Millenials (25-40yo)', value: feature.properties.MillenialsCountIn },
+        //             { name: 'Gen X (41-56)', value: feature.properties.GenXCountIn },
+        //             { name: 'Baby Boomers (57-75)', value: feature.properties.BoomersCountIn }
+        //         ]
+            
+        //     }).addTo(layers["inbound"]);
+        
     
     })
 
@@ -113,13 +116,22 @@ d3.json(stateBoundaries, function(boundaries) {
 
         // Add migrants to JSON
         filteredStates[0]['properties']['MigrantCountOut'] = element.migrants
+        // Add generations to JSON
+        filteredStates[0]['properties']['MillenialsCountOut'] = element.millenials
+        filteredStates[0]['properties']['GenXCountOut'] = element.genx
+        filteredStates[0]['properties']['BoomersCountOut'] = element.boomers
 
         L.geoJSON(filteredStates, {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
-              layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] + "<br><b># of Outbound:</b> " + feature.properties.MigrantCountOut)}
-        // Add geoJSON to outbound layer
-          }).addTo(layers['outbound']);
+              layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
+              + "<br><b>Total Migrants Out:</b> " + feature.properties.MigrantCountOut 
+              + "<br><b>Millenials:</b> " + Math.round((feature.properties.MillenialsCountOut/feature.properties.MigrantCountOut)*100) + "%" 
+              + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountOut/feature.properties.MigrantCountOut)*100) + "%"
+              + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountOut/feature.properties.MigrantCountOut)*100) + "%")}
+               
+          // Add geoJSON to inbound layer
+          }).addTo(layers["outbound"])
       })
     })
   });
