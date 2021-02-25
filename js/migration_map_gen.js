@@ -170,25 +170,59 @@ d3.json(stateBoundaries, function(boundaries) {
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
         console.log(filteredStates)
 
-        // Add migrants to JSON
+        // Migrants JSON
         filteredStates[0]['properties']['MigrantCountOut'] = element.migrants
-        // Add generations to JSON
+        filteredMigrants = filteredStates[0]['properties']['MigrantCountOut']
+        
+        // Generations JSON
         filteredStates[0]['properties']['MillenialsCountOut'] = element.millenials
+        filteredMillenials = filteredStates[0]['properties']['MillenialsCountOut']
+
         filteredStates[0]['properties']['GenXCountOut'] = element.genx
+        filteredGenX = filteredStates[0]['properties']['GenXCountOut']
+
         filteredStates[0]['properties']['BoomersCountOut'] = element.boomers
+        filteredBoomers = filteredStates[0]['properties']['BoomersCountOut']
+
+        // LatLng JSON
+        filteredStates[0]['properties']['Lat'] = element.lat
+        filteredStates[0]['properties']['Lng'] = element.lng
+        filteredLat = filteredStates[0]['properties']['Lat']
+        filteredLng = filteredStates[0]['properties']['Lng']
+        console.log(filteredStates)
+
+        stateName = filteredStates[0]['properties']['NAME']
+        console.log(stateName)
         
 
         L.geoJSON(filteredStates, {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
               layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-              + "<br><b>Total Migrants Out:</b> " + feature.properties.MigrantCountOut 
-              + "<br><b>Millenials:</b> " + Math.round((feature.properties.MillenialsCountOut/feature.properties.MigrantCountOut)*100) + "%" 
-              + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountOut/feature.properties.MigrantCountOut)*100) + "%"
-              + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountOut/feature.properties.MigrantCountOut)*100) + "%")}
+              + "<br><b>Total Migrants Out:</b> " + filteredMigrants 
+              + "<br><b>Millenials:</b> " + filteredMillenials 
+              + "<br><b>Gen X:</b> " + filteredGenX
+              + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
                
           // Add geoJSON to inbound layer
           }).addTo(layers["outbound"])
+
+
+        L.piechartMarker(
+            L.latLng([filteredLat, filteredLng]),
+            {
+                radius: 30,
+                data: [
+                    { name: 'Millenials (25-40yo)', value: element.millenials, },
+                    { name: 'Gen X (41-56)', value: element.genx },
+                    { name: 'Baby Boomers (57-75)', value: element.boomers }
+                ]
+            }).bindPopup("<b>Total Migrants out:</b> " + filteredMigrants
+             + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
+              + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
+              + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
+            ).addTo(layers["piechartout"]);
+  
       })
     })
   });
