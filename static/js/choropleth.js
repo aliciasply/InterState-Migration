@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<style type="text/css">
 
-/* Legend Font Style */
-body {
-	font: 11px sans-serif;
-	background-color: #ffffff;
-}
-        
-/* Legend Position Style */
-.legend {
-	position:absolute;
-	left:20px;
-	top:30px;
-}
-
-.axis text {
-	font: 10px sans-serif;
-}
-
-.axis line, .axis path {
-	fill: none;
-	stroke: rgb(167, 87, 87);
-	shape-rendering: crispEdges;
-}
-
-</style>
-</head>
-<body>
-<script type="text/javascript">
-		
 //Width and height of map
 var width = 960;
 var height = 500;
@@ -56,26 +22,30 @@ var svg = d3.select("body")
   .attr("height", height);
 
 // Load in my states data!
-d3.csv("statesdata.csv", function(data) {
+d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
+  console.log(data)
+  data.forEach(d =>{
+    d.AverageIncome = +d["Average Income"];
+  })
 	var dataArray = [];
 	for (var d = 0; d < data.length; d++) {
-		dataArray.push(parseFloat(data[d].value))
+		dataArray.push(parseFloat(data[d].AverageIncome))
 	}
 	var minVal = d3.min(dataArray)
 	var maxVal = d3.max(dataArray)
 	var ramp = d3.scaleLinear().domain([minVal,maxVal]).range([lowColor,highColor])
 	
   // Load GeoJSON data and merge with states data
-  d3.json("us-states.json", function(json) {
+  d3.json("/Data/Alicia/us-states.json", function(json) {
 
     // Loop through each state data value in the .csv file
     for (var i = 0; i < data.length; i++) {
 
       // Grab State Name
-      var dataState = data[i].state;
+      var dataState = data[i].State;
 
       // Grab data value 
-      var dataValue = data[i].value;
+      var dataValue = data[i].AverageIncome;
 
       // Find the corresponding state inside the GeoJSON
       for (var j = 0; j < json.features.length; j++) {
@@ -84,7 +54,7 @@ d3.csv("statesdata.csv", function(data) {
         if (dataState == jsonState) {
 
           // Copy the data value into the JSON
-          json.features[j].properties.value = dataValue;
+          json.features[j].properties.AverageIncome = dataValue;
 
           // Stop looking through the JSON
           break;
@@ -93,6 +63,7 @@ d3.csv("statesdata.csv", function(data) {
     }
 
     // Bind the data to the SVG and create one path per GeoJSON feature
+    console.log(json.features)
     svg.selectAll("path")
       .data(json.features)
       .enter()
@@ -100,8 +71,35 @@ d3.csv("statesdata.csv", function(data) {
       .attr("d", path)
       .style("stroke", "#fff")
       .style("stroke-width", "1")
-      .style("fill", function(d) { return ramp(d.properties.value) });
-    
+      .style("fill", function(d) { 
+        console.log(ramp(d.properties.AverageIncome));
+        return ramp(d.properties.AverageIncome) });
+
+    /////////////////////////
+    // Step 6: Initialize tool tip
+        // ==============================
+      var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+          return (`${d.State}<br>AverageIncome: ${d.properties.AverageIncome}`);
+      });
+
+      // Step 7: Create tooltip in the chart
+      // ==============================
+      chartGroup.call(toolTip);
+
+      // Step 8: Create event listeners to display and hide the tooltip
+      // ==============================
+      circlesGroup.on("click", function(data) {
+      toolTip.show(data, this);
+      })
+      // onmouseout event
+      .on("mouseout", function(data, index) {
+          toolTip.hide(data);
+      })
+
+     //////////////////   
 		// add a legend
 		var w = 140, h = 300;
 
@@ -144,63 +142,7 @@ d3.csv("statesdata.csv", function(data) {
 
 		key.append("g")
 			.attr("class", "y axis")
-			.attr("transform", "translate(41,10)")
+			.attr("transform", "translate(50,20)")
 			.call(yAxis)
   });
 });
-</script>
-</body>
-</html>
-statesdata.csv#
-state,value
-Alabama,7.9
-Alaska,1.4
-Arkansas,14.7
-Arizona,13.4
-California,14.1
-Colorado,12.9
-Connecticut,9.5
-Delaware,13.7
-District of Columbia,6.6
-Florida,4.4
-Georgia,11.6
-Hawaii,17.4
-Iowa,5.9
-Idaho,16.4
-Illinois,18.6
-Indiana,3.9
-Kansas,14.2
-Kentucky,10.5
-Louisiana,17.2
-Maine,15.7
-Maryland,4.9
-Massachusetts,13.7
-Michigan,19.7
-Minnesota,12.8
-Missouri,2.2
-Mississippi,6.8
-Montana,13.8
-North Carolina,14.7
-North Dakota,11.1
-Nebraska,13.7
-New Hampshire,9.7
-New Jersey,2.2
-New Mexico,3.1
-Nevada,18.2
-New York,12.8
-Ohio,5
-Oklahoma,12.4
-Oregon,13.3
-Pennsylvania,0.2
-Rhode Island,13
-South Carolina,1.8
-South Dakota,5.1
-Tennessee,6.6
-Texas,8.1
-Utah,11.3
-Virginia,4.8
-Vermont,18.4
-Washington,13.4
-Wisconsin,8.9
-West Virginia,18.1
-Wyoming,0
