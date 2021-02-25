@@ -23,6 +23,10 @@ var svg = d3.select("body")
 
 // Load in my states data!
 d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
+  console.log(data)
+  data.forEach(d =>{
+    d.AverageIncome = +d["Average Income"];
+  })
 	var dataArray = [];
 	for (var d = 0; d < data.length; d++) {
 		dataArray.push(parseFloat(data[d].AverageIncome))
@@ -59,6 +63,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
     }
 
     // Bind the data to the SVG and create one path per GeoJSON feature
+    console.log(json.features)
     svg.selectAll("path")
       .data(json.features)
       .enter()
@@ -66,8 +71,35 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
       .attr("d", path)
       .style("stroke", "#fff")
       .style("stroke-width", "1")
-      .style("fill", function(d) { return ramp(d.properties.value) });
-    
+      .style("fill", function(d) { 
+        console.log(ramp(d.properties.AverageIncome));
+        return ramp(d.properties.AverageIncome) });
+
+    /////////////////////////
+    // Step 6: Initialize tool tip
+        // ==============================
+      var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+          return (`${d.State}<br>AverageIncome: ${d.properties.AverageIncome}`);
+      });
+
+      // Step 7: Create tooltip in the chart
+      // ==============================
+      chartGroup.call(toolTip);
+
+      // Step 8: Create event listeners to display and hide the tooltip
+      // ==============================
+      circlesGroup.on("click", function(data) {
+      toolTip.show(data, this);
+      })
+      // onmouseout event
+      .on("mouseout", function(data, index) {
+          toolTip.hide(data);
+      })
+
+     //////////////////   
 		// add a legend
 		var w = 140, h = 300;
 
@@ -110,7 +142,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 
 		key.append("g")
 			.attr("class", "y axis")
-			.attr("transform", "translate(41,10)")
+			.attr("transform", "translate(50,20)")
 			.call(yAxis)
   });
 });
