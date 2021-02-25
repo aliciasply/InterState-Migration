@@ -27,7 +27,7 @@ var svg = d3.select("key")
 
 var chart = svg.append("g")
 .attr("viewBox", [0, 0, width, height]);
-
+var nodelist2 = [];
 d3.csv("../static/data/sankey.csv").then(function(migrantData) {
     console.log (migrantData)
     allnodes = []
@@ -42,6 +42,13 @@ d3.csv("../static/data/sankey.csv").then(function(migrantData) {
 
     var node = {
         name: data.Origin}
-    nodelist.push(node)})
+    if (!nodelist.includes(node.name)){ nodelist.push(node.name);}
     
+       
+    
+  })
+    nodelist.forEach(x => {
+      nodelist2.push({"name":x})})
     console.log(Data)})
+
+    
