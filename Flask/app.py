@@ -35,6 +35,21 @@ def home():
     # )
     return render_template("index.html")
 
+@app.route("/Alexei.html")
+def alexei():
+    return render_template("Alexei.html")
+
+@app.route("/Justin.html")
+def justin():
+    return render_template("Justin.html")
+
+@app.route("/Alicia.html")
+def alicia():
+    return render_template("Alicia.html")
+
+@app.route("/Rob.html")
+def rob():
+    return render_template("Rob.html")
 
 # Make new routes for top 5 states then order by and group by state name
 
