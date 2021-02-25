@@ -52,72 +52,66 @@
   
     <body>
    
-      <div class="container">
-    
-        <!-- Row 1 -->
-        <div class="row">
-          <div class="col-md-12">
-            <h2>About the Project</h2>
-            <p> Project PRISM aspires to use data visualization to de-mystify the phenomenon of geographic mobility in the United States. The vastness of the North American continent 
-              is a quintessential part of the American national identity. Every year, tens of thousands of Americans pack up and move to different cities, counties, and states. To better understand this phenomenon,
-              the team makes use of data visualization techniques to make the extent and scale of this phenomenon easier to comprehend and iunderstand who the Americans migrating are, where they are going, and infer why they are moving.
-            </p>
+      <div class="wrapper">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="index.html">UFO Sightings
+                <img class="nav-ufo" src="static/images/ufo.svg">
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div class="hero text-center">
+          <h1>UFO Sightings</h1>
+          <p>The Truth is Out There</p>
+        </div>
+        <div class="container">
+          <div class="row margin-top-50">
+            <div class="col-md-2">
+              <aside class="filters">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Filter Search</div>
+                  <div class="panel-body">
+                    <form>
+                      <div class="form-group">
+                        <ul class="list-group" id="filters">
+                          <li class="filter list-group-item">
+                            <label for="date">Enter a Date</label>
+                            <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                          </li>
+                        </ul>
+                      </div>
+                      <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                    </form>
+                  </div>
+                </div>
+              </aside>
+            </div>
+            <div class="col-md-10">
+              <div id="table-area" class="">
+                <table id="ufo-table" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th class="table-head">Date</th>
+                      <th class="table-head">City</th>
+                      <th class="table-head">State</th>
+                      <th class="table-head">Country</th>
+                      <th class="table-head">Shape</th>
+                      <th class="table-head">Duration</th>
+                      <th class="table-head">Comments</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-    
-          <div class="row">
-           <div class="col-xs-12  col-md-9">
-             <div id="scatter">
-               <!-- We append our chart here. -->
-             </div>
-             <p> Project PRISM aspires to use data visualization to de-mystify the phenomenon of geographic mobility in the United States. The vastness of the North American continent 
-                is a quintessential part of the American national identity. Every year, tens of thousands of Americans pack up and move to different cities, counties, and states. To better understand this phenomenon,
-                the team makes use of data visualization techniques to make the extent and scale of this phenomenon easier to comprehend and iunderstand who the Americans migrating are, where they are going, and infer why they are moving.
-              </p>
-           </div>
-          </div>
-           
-          <div class="row">
-            <div class="col-xs-12  col-md-9">
-              <div id="map">
-             <!-- We append our chart here. -->
-              </div>
-              <p>Map 1.1: this map shows ... 
-              </p>
-            </div>
-         </div> 
-    
-           <div class="row">
-             <div class="col-xs-12  col-md-9">
-                 <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
-                   The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
-                   On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
-                   The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
-                   these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
-                 </p>
-             </div>    
-           </div>
-         </div>
-    
-         <div class="row">
-          <div class="col-xs-12  col-md-9">
-            <div id="bar">
-              <!-- We append our chart here. -->
-            </div>
-            <p>Plot 1.2: this chart shows ... 
-            </p>
-          </div>
-          </div>
-    
-          <div class="row">
-            <div class="col-xs-12  col-md-9">
-              <div id="line">
-                <!-- We append our chart here. -->
-              </div>
-              <p>Plot 1.3: this chart shows ... 
-              </p>
-            </div>
-            </div>
+        <footer class="footer">
+          <span class="bottom">UFO Sightings</span>
+        </footer>
+      </div>
        </div>
 
 

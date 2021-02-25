@@ -3,8 +3,9 @@ var svgHeight = 600;
 
 const linklist = []
 const nodelist = []
+const nodelist2 = [];
 const Data = {
-    nodes:  nodelist,
+    nodes:  nodelist2,
     links: linklist,
     units: "persons (estimated)",
 }
@@ -27,8 +28,8 @@ var svg = d3.select("key")
 
 var chart = svg.append("g")
 .attr("viewBox", [0, 0, width, height]);
-var nodelist2 = [];
-d3.csv("../static/data/sankey.csv").then(function(migrantData) {
+
+d3.csv("static/data/sankey.csv").then(function(migrantData) {
     console.log (migrantData)
     allnodes = []
     migrantData.forEach(function(data) {

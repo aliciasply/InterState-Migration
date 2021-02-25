@@ -33,7 +33,7 @@ def home():
     #     f'<b>Available Routes:</b><br/><br/>'
     #     f'/api/v1.0/query<br/>'
     # )
-    return render_template("Alexei.html")
+    return render_template("index.html")
 
 
 # Make new routes for top 5 states then order by and group by state name
