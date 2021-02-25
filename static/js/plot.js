@@ -53,3 +53,5 @@ d3.csv("static/data/sankey.csv").then(function(migrantData) {
     console.log(Data)})
 
     
+
+    
