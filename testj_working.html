@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
+  <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css"/> -->
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="css/migrationmapstyle.css">
@@ -59,11 +60,35 @@
         </li>
     </nav>
 
-
+    <style type="text/css">
+      #header {
+        padding:0 1em;
+      }
+  
+      body {
+        padding:0;
+        margin:0;
+      }
+  
+      #description {
+        line-height:0px;
+        font-style:italic;
+      }
+  
+      #map {
+        top:120px;
+        bottom:0;
+        left:0;
+        right:0;
+        position:absolute;
+        background:#fff;
+      }
+    </style>
   
 </head>
 
 <body>
+
 
   <!-- The div that holds our map -->
   <h1>Project PRISM</h1>

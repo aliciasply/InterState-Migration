@@ -93,17 +93,40 @@ d3.json(stateBoundaries, function(boundaries) {
         }).addTo(layers["inbound"])
         
         // Pie chart
-        // L.piechartMarker(
-        //     L.latLng([37.683, -122.4536]),
-        //     {
-        //         radius: 50,
-        //         data: [
-        //             { name: 'Millenials (25-40yo)', value: feature.properties.MillenialsCountIn },
-        //             { name: 'Gen X (41-56)', value: feature.properties.GenXCountIn },
-        //             { name: 'Baby Boomers (57-75)', value: feature.properties.BoomersCountIn }
-        //         ]
-            
-        //     }).addTo(layers["inbound"]);
+        // Assign global variables and assign it to be passed into piechartMarker
+        // L.piechartMarker(filteredStates, {
+        //   thisFunction: function(feature) {
+        //   L.latLng([feature.properties.Lat, feature.properties.Lng]),
+        //   {
+        //       radius: 50,
+        //       data: [
+        //           { name: 'Millenials (25-40yo)', value: element.millenials },
+        //           { name: 'Gen X (41-56)', value: element.genx },
+        //           { name: 'Baby Boomers (57-75)', value: element.boomers }
+        //       ]
+        //   }}}).addTo(layers["inbound"]);
+
+        
+        ////////// THIS WORKS ////////////////////////
+        // Pie chart
+        // Assign global variables and assign it to be passed into piechartMarker
+ 
+        L.piechartMarker(
+            L.latLng([37.683, -122.4536]),
+            {
+                radius: 50,
+                data: [
+                    { name: 'Millenials (25-40yo)', value: element.millenials },
+                    { name: 'Gen X (41-56)', value: element.genx },
+                    { name: 'Baby Boomers (57-75)', value: element.boomers }
+                ]
+            }).addTo(layers["inbound"]);
+        // Test
+        function logsomestuff(num){
+          return console.log(num)
+        }
+
+       ////////// THIS WORKS ////////////////////////
         
     
     })
