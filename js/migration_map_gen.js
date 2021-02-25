@@ -7,7 +7,7 @@ var layers = {
 // Create initial map object
 var myMap = L.map("migrationmapid", {
       center: [38.5003668,-99.5509956],
-      zoom: 5,
+      zoom: 4.5,
       layers: [
         layers.inbound
       ]
