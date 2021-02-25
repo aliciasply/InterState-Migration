@@ -70,57 +70,82 @@ d3.json(stateBoundaries, function(boundaries) {
       top5In.forEach(element => {
         // Filter json data by comparing to CSV then store as variable
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
+        // console.log(filteredStates)
+
+        // Migrants in JSON
+        filteredStates[0]['properties']['MigrantCountIn'] = element.migrants
+        filteredMigrants = filteredStates[0]['properties']['MigrantCountIn']
+        
+        // Generations in JSON
+        filteredStates[0]['properties']['MillenialsCountIn'] = element.millenials
+        filteredMillenials = filteredStates[0]['properties']['MillenialsCountIn']
+
+        filteredStates[0]['properties']['GenXCountIn'] = element.genx
+        filteredGenX = filteredStates[0]['properties']['GenXCountIn']
+
+        filteredStates[0]['properties']['BoomersCountIn'] = element.boomers
+        filteredBoomers = filteredStates[0]['properties']['BoomersCountIn']
+
+        // LatLng in JSON
+        filteredStates[0]['properties']['Lat'] = element.lat
+        filteredStates[0]['properties']['Lng'] = element.lng
+        filteredLat = filteredStates[0]['properties']['Lat']
+        filteredLng = filteredStates[0]['properties']['Lng']
         console.log(filteredStates)
 
-        // Add migrants to JSON
-        filteredStates[0]['properties']['MigrantCountIn'] = element.migrants
-        // Add generations to JSON
-        filteredStates[0]['properties']['MillenialsCountIn'] = element.millenials
-        filteredStates[0]['properties']['GenXCountIn'] = element.genx
-        filteredStates[0]['properties']['BoomersCountIn'] = element.boomers
-
+        stateName = filteredStates[0]['properties']['NAME']
+        console.log(stateName)
 
         L.geoJSON(filteredStates, {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
             layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-            + "<br><b>Total Migrants In:</b> " + feature.properties.MigrantCountIn 
-            + "<br><b>Millenials:</b> " + Math.round((feature.properties.MillenialsCountIn/feature.properties.MigrantCountIn)*100) + "%" 
-            + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountIn/feature.properties.MigrantCountIn)*100) + "%"
-            + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountIn/feature.properties.MigrantCountIn)*100) + "%")}
+            + "<br><b>Total Migrants In:</b> " + filteredMigrants 
+            + "<br><b>Millenials:</b> " + filteredMillenials 
+            + "<br><b>Gen X:</b> " + filteredGenX
+            + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
              
         // Add geoJSON to inbound layer
         }).addTo(layers["inbound"])
         
         // Pie chart
         // Assign global variables and assign it to be passed into piechartMarker
-        // L.piechartMarker(filteredStates, {
-        //   thisFunction: function(feature) {
-        //   L.latLng([feature.properties.Lat, feature.properties.Lng]),
-        //   {
-        //       radius: 50,
-        //       data: [
-        //           { name: 'Millenials (25-40yo)', value: element.millenials },
-        //           { name: 'Gen X (41-56)', value: element.genx },
-        //           { name: 'Baby Boomers (57-75)', value: element.boomers }
-        //       ]
-        //   }}}).addTo(layers["inbound"]);
+        L.piechartMarker(
+          L.latLng([filteredLat, filteredLng]),
+          {
+              radius: 50,
+              data: [
+                  { name: 'Millenials (25-40yo)', value: element.millenials },
+                  { name: 'Gen X (41-56)', value: element.genx },
+                  { name: 'Baby Boomers (57-75)', value: element.boomers }
+              ]
+          }).bindPopup("<b>Total Migrants in:</b> " + filteredMigrants
+           + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
+            + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
+            + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
+          ).addTo(layers["inbound"]);
 
-        
+
         ////////// THIS WORKS ////////////////////////
         // Pie chart
         // Assign global variables and assign it to be passed into piechartMarker
- 
-        L.piechartMarker(
-            L.latLng([37.683, -122.4536]),
-            {
-                radius: 50,
-                data: [
-                    { name: 'Millenials (25-40yo)', value: element.millenials },
-                    { name: 'Gen X (41-56)', value: element.genx },
-                    { name: 'Baby Boomers (57-75)', value: element.boomers }
-                ]
-            }).addTo(layers["inbound"]);
+
+        // L.piechartMarker(
+        //     L.latLng(filteredLat, filteredLng),
+        //     {
+        //         radius: 50,
+        //         data: [
+        //             { name: 'Millenials (25-40yo)', value: filteredMillenials },
+        //             { name: 'Gen X (41-56)', value: filteredGenX },
+        //             { name: 'Baby Boomers (57-75)', value: filteredBoomers }
+        //         ]
+        //     }).bindPopup(("<b>State:</b> " + feature.properties['NAME'] 
+        //     + "<br><b>Total Migrants In:</b> " + feature.properties.MigrantCountIn 
+        //     + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/feature.properties.MigrantCountIn)*100) + "%" 
+        //     + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountIn/feature.properties.MigrantCountIn)*100) + "%"
+        //     + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountIn/feature.properties.MigrantCountIn)*100) + "%")
+
+        //     );
         // Test
         function logsomestuff(num){
           return console.log(num)
