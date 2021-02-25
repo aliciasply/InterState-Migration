@@ -9,8 +9,7 @@ var myMap = L.map("migrationmapid", {
       center: [38.5003668,-99.5509956],
       zoom: 5,
       layers: [
-        layers.inbound,
-        layers.outbound,
+        layers.inbound
       ]
     });
   
@@ -43,7 +42,7 @@ var mapStyleOut = {
 
 // Data sources
 stateBoundaries = "https://raw.githubusercontent.com/loganpowell/census-geojson/master/GeoJSON/5m/2019/state.json";
-migCsv = "../Data/Justin/top5_in_out.csv"
+migCsv = "../Data/Justin/top10_in_out.csv"
   
 
 var overlays = {
