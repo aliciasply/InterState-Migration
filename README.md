@@ -1,5 +1,7 @@
 ## InterState Migration 
 
+![Prism](Images/prism.jpg)
+
 ### Goal:
 Project PRISM aims to combat misconceptions about the complex phenomenon of internal geographic mobility in the United States.  
 
