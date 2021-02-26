@@ -105,6 +105,7 @@ d3.json(stateBoundaries, function(boundaries) {
         stateName = filteredStates[0]['properties']['NAME']
         console.log(stateName)
 
+        // Outline filtered states
         L.geoJSON(filteredStates, {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
@@ -118,50 +119,22 @@ d3.json(stateBoundaries, function(boundaries) {
         }).addTo(layers["inbound"])
         
         // Pie chart
-        // Assign global variables and assign it to be passed into piechartMarker
         L.piechartMarker(
           L.latLng([filteredLat, filteredLng]),
           {
               radius: 30,
               data: [
-                  { name: 'Millenials (25-40yo)', value: element.millenials, },
-                  { name: 'Gen X (41-56)', value: element.genx },
-                  { name: 'Baby Boomers (57-75)', value: element.boomers }
-              ]
-          }).bindPopup("<b>Total Migrants in:</b> " + filteredMigrants
-           + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
-            + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
-            + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
-          ).addTo(layers["piechartin"]);
+                { name: 'Millenials (25-40yo)', value: element.millenials, style: millPie},
+                { name: 'Gen X (41-56)', value: element.genx, style: genxPie },
+                { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
+            ]
+          }).bindPopup("<b>State: </b>" + stateName +
+          "<br><br><b>Total Migrants out:</b> " + filteredMigrants
+         + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
+          + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
+          + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
+        ).addTo(layers["piechartin"]);
 
-
-        ////////// THIS WORKS ////////////////////////
-        // Pie chart
-        // Assign global variables and assign it to be passed into piechartMarker
-
-        // L.piechartMarker(
-        //     L.latLng(filteredLat, filteredLng),
-        //     {
-        //         radius: 50,
-        //         data: [
-        //             { name: 'Millenials (25-40yo)', value: filteredMillenials },
-        //             { name: 'Gen X (41-56)', value: filteredGenX },
-        //             { name: 'Baby Boomers (57-75)', value: filteredBoomers }
-        //         ]
-        //     }).bindPopup(("<b>State:</b> " + feature.properties['NAME'] 
-        //     + "<br><b>Total Migrants In:</b> " + feature.properties.MigrantCountIn 
-        //     + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/feature.properties.MigrantCountIn)*100) + "%" 
-        //     + "<br><b>Gen X:</b> " + Math.round((feature.properties.GenXCountIn/feature.properties.MigrantCountIn)*100) + "%"
-        //     + "<br><b>Baby Boomers:</b> " + Math.round((feature.properties.BoomersCountIn/feature.properties.MigrantCountIn)*100) + "%")
-
-        //     );
-        // Test
-        function logsomestuff(num){
-          return console.log(num)
-        }
-
-       ////////// THIS WORKS ////////////////////////
-        
     
     })
 
@@ -194,7 +167,7 @@ d3.json(stateBoundaries, function(boundaries) {
         stateName = filteredStates[0]['properties']['NAME']
         console.log(stateName)
         
-
+        // Outline filtered states
         L.geoJSON(filteredStates, {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
@@ -207,17 +180,18 @@ d3.json(stateBoundaries, function(boundaries) {
           // Add geoJSON to inbound layer
           }).addTo(layers["outbound"])
 
-
+        // Pie chart
         L.piechartMarker(
             L.latLng([filteredLat, filteredLng]),
             {
                 radius: 30,
                 data: [
-                    { name: 'Millenials (25-40yo)', value: element.millenials, },
-                    { name: 'Gen X (41-56)', value: element.genx },
-                    { name: 'Baby Boomers (57-75)', value: element.boomers }
+                    { name: 'Millenials (25-40yo)', value: element.millenials, style: millPie},
+                    { name: 'Gen X (41-56)', value: element.genx, style: genxPie },
+                    { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
                 ]
-            }).bindPopup("<b>Total Migrants out:</b> " + filteredMigrants
+            }).bindPopup("<b>State: </b>" + stateName +
+              "<br><br><b>Total Migrants out:</b> " + filteredMigrants
              + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
               + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
               + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
@@ -226,4 +200,8 @@ d3.json(stateBoundaries, function(boundaries) {
       })
     })
   });
-  
+
+// Pie chart colors
+millPie = { fillStyle: '#65e6ae', strokeStyle: '#65e6ae', lineWidth: 2 }
+genxPie = { fillStyle: 'rgb(210, 93, 176)', strokeStyle: 'rgb(210, 93, 176)', lineWidth: 2 }
+boomPie = { fillStyle: 'rgb(255, 127, 23)', strokeStyle: 'rgb(255, 127, 23)', lineWidth: 2 } 
