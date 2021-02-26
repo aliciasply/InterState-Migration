@@ -110,7 +110,7 @@ d3.json(stateBoundaries, function(boundaries) {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
             layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-            + "<br><b>Total Migrants In:</b> " + filteredMigrants 
+            + "<br><br><b>Total Migrants In:</b> " + filteredMigrants 
             + "<br><b>Millenials:</b> " + filteredMillenials 
             + "<br><b>Gen X:</b> " + filteredGenX
             + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
@@ -172,7 +172,7 @@ d3.json(stateBoundaries, function(boundaries) {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
               layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-              + "<br><b>Total Migrants Out:</b> " + filteredMigrants 
+              + "<br><br><b>Total Migrants Out:</b> " + filteredMigrants 
               + "<br><b>Millenials:</b> " + filteredMillenials 
               + "<br><b>Gen X:</b> " + filteredGenX
               + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
@@ -205,3 +205,4 @@ d3.json(stateBoundaries, function(boundaries) {
 millPie = { fillStyle: '#65e6ae', strokeStyle: '#65e6ae', lineWidth: 2 }
 genxPie = { fillStyle: 'rgb(210, 93, 176)', strokeStyle: 'rgb(210, 93, 176)', lineWidth: 2 }
 boomPie = { fillStyle: 'rgb(255, 127, 23)', strokeStyle: 'rgb(255, 127, 23)', lineWidth: 2 } 
+
