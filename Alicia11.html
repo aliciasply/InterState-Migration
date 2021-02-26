@@ -33,6 +33,19 @@
         stroke: rgb(167, 87, 87);
         shape-rendering: crispEdges;
       }
+      .tooltip {
+        display: none;
+        position: absolute;
+        width: 80px;
+        padding: 2px;
+        font: 12px sans-serif;
+        text-align: center;
+        background: palegreen;
+        border: 0;
+        border-radius: 10px;
+        opacity: 1;
+      }
+      
       
       </style>
   </head>
@@ -82,18 +95,18 @@
     <h1>Project for Plotting to Re-imagine Inter-State Migrations</h1>
     <div class="container">
 
-    
+    <!-- <div id="tooltip" class="tooltip"></div> -->
     <div class="row">
         <div class="col-xs-12  col-md-12">
           <div id="map">
-            visuaulzation goes there. 
+            This Choropleth map exhibit the 2019 average income of each state.
 
 
           </div>
          
        <div class="row">
          <div class="col-xs-12  col-md-9">
-             <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
+             <p> This graph shows income distribution across the states.  chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
                The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
                On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
                The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
@@ -111,7 +124,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="js/choropleth3.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/choropleth111.js"></script>
   </body>
 </html>

@@ -83,37 +83,37 @@ d3.json(stateBoundaries, function(boundaries) {
 
         // Migrants JSON
         filteredStates[0]['properties']['MigrantCountIn'] = element.migrants
-        filteredMigrants = filteredStates[0]['properties']['MigrantCountIn']
+        filteredMigrants = parseInt(filteredStates[0]['properties']['MigrantCountIn'])
         
         // Generations JSON
         filteredStates[0]['properties']['MillenialsCountIn'] = element.millenials
-        filteredMillenials = filteredStates[0]['properties']['MillenialsCountIn']
+        filteredMillenials = parseInt(filteredStates[0]['properties']['MillenialsCountIn'])
 
         filteredStates[0]['properties']['GenXCountIn'] = element.genx
-        filteredGenX = filteredStates[0]['properties']['GenXCountIn']
+        filteredGenX = parseInt(filteredStates[0]['properties']['GenXCountIn'])
 
         filteredStates[0]['properties']['BoomersCountIn'] = element.boomers
-        filteredBoomers = filteredStates[0]['properties']['BoomersCountIn']
+        filteredBoomers = parseInt(filteredStates[0]['properties']['BoomersCountIn'])
 
         // LatLng JSON
         filteredStates[0]['properties']['Lat'] = element.lat
         filteredStates[0]['properties']['Lng'] = element.lng
         filteredLat = filteredStates[0]['properties']['Lat']
         filteredLng = filteredStates[0]['properties']['Lng']
-        console.log(filteredStates)
+        // console.log(filteredStates)
 
         stateName = filteredStates[0]['properties']['NAME']
-        console.log(stateName)
+        
 
         // Outline filtered states
         L.geoJSON(filteredStates, {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
             layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-            + "<br><br><b>Inbound migrant total:</b> " + filteredMigrants 
-            + "<br><b>Millenials:</b> " + filteredMillenials 
-            + "<br><b>Gen X:</b> " + filteredGenX
-            + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
+            + "<br><br><b>Inbound migrant total:</b> " + filteredMigrants.toLocaleString() 
+            + "<br><b>Millenials:</b> " + filteredMillenials.toLocaleString() 
+            + "<br><b>Gen X:</b> " + filteredGenX.toLocaleString()
+            + "<br><b>Baby Boomers:</b> " + filteredBoomers.toLocaleString())}
              
         // Add geoJSON to inbound layer
         }).addTo(layers["inbound"])
@@ -129,7 +129,7 @@ d3.json(stateBoundaries, function(boundaries) {
                 { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
             ]
           }).bindPopup("<b>State: </b>" + stateName +
-          "<br><br><b>Inbound migrant total:</b> " + filteredMigrants
+          "<br><br><b>Inbound migrant total:</b> " + filteredMigrants.toLocaleString()
          + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
           + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
           + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
@@ -141,41 +141,41 @@ d3.json(stateBoundaries, function(boundaries) {
       top10Out.forEach(element => {
         // Filter json data by comparing to CSV then store as variable
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
-        console.log(filteredStates)
+        // console.log(filteredStates)
 
-        // Migrants JSON
+        // Migrants JSON 
         filteredStates[0]['properties']['MigrantCountOut'] = element.migrants
-        filteredMigrants = filteredStates[0]['properties']['MigrantCountOut']
+        filteredMigrants = parseInt(filteredStates[0]['properties']['MigrantCountOut'])
+        // console.log(filteredMigrants)
         
         // Generations JSON
         filteredStates[0]['properties']['MillenialsCountOut'] = element.millenials
-        filteredMillenials = filteredStates[0]['properties']['MillenialsCountOut']
+        filteredMillenials = parseInt(filteredStates[0]['properties']['MillenialsCountOut'])
 
         filteredStates[0]['properties']['GenXCountOut'] = element.genx
-        filteredGenX = filteredStates[0]['properties']['GenXCountOut']
+        filteredGenX = parseInt(filteredStates[0]['properties']['GenXCountOut'])
 
         filteredStates[0]['properties']['BoomersCountOut'] = element.boomers
-        filteredBoomers = filteredStates[0]['properties']['BoomersCountOut']
+        filteredBoomers = parseInt(filteredStates[0]['properties']['BoomersCountOut'])
 
         // LatLng JSON
         filteredStates[0]['properties']['Lat'] = element.lat
         filteredStates[0]['properties']['Lng'] = element.lng
         filteredLat = filteredStates[0]['properties']['Lat']
         filteredLng = filteredStates[0]['properties']['Lng']
-        console.log(filteredStates)
+        // console.log(filteredStates)
 
         stateName = filteredStates[0]['properties']['NAME']
-        console.log(stateName)
         
         // Outline filtered states
         L.geoJSON(filteredStates, {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
               layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-              + "<br><br><b>Outbound migrant total:</b> " + filteredMigrants 
-              + "<br><b>Millenials:</b> " + filteredMillenials 
-              + "<br><b>Gen X:</b> " + filteredGenX
-              + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
+              + "<br><br><b>Outbound migrant total:</b> " + filteredMigrants.toLocaleString() 
+              + "<br><b>Millenials:</b> " + filteredMillenials.toLocaleString() 
+              + "<br><b>Gen X:</b> " + filteredGenX.toLocaleString()
+              + "<br><b>Baby Boomers:</b> " + filteredBoomers.toLocaleString())}
                
           // Add geoJSON to inbound layer
           }).addTo(layers["outbound"])
@@ -191,7 +191,7 @@ d3.json(stateBoundaries, function(boundaries) {
                     { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
                 ]
             }).bindPopup("<b>State: </b>" + stateName +
-              "<br><br><b>Outbound migrant total:</b> " + filteredMigrants
+              "<br><br><b>Outbound migrant total:</b> " + filteredMigrants.toLocaleString()
              + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
               + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
               + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"

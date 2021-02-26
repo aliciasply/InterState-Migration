@@ -107,7 +107,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 			.attr("width", w)
 			.attr("height", h)
 			.attr("class", "legend")
-      .attr("transform", "translate(900,300)");
+      .attr("transform", "translate(900,400)");
 
 		var legend = key.append("defs")
 			.append("svg:linearGradient")
