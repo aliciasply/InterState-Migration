@@ -20,6 +20,19 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
+sankey = {
+  const sankey = d3.sankey(),
+      .nodeId(d => d.name)
+      .nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
+      .nodeWidth(15)
+      .nodePadding(10)
+      .extent([[1, 5], [width - 1, height - 5]]);
+  return ({nodes, links}) => sankey({
+    nodes: nodes.map(d => Object.assign({}, d)),
+    links: links.map(d => Object.assign({}, d))
+  });
+}
+
 var svg = d3.select("key")
   .append("svg")
   .attr("width", svgWidth)
@@ -44,13 +57,13 @@ d3.csv("static/data/sankey.csv").then(function(migrantData) {
     var node = {
         name: data.Origin}
     if (!nodelist.includes(node.name)){ nodelist.push(node.name);}
-    
-       
-    
+  
   })
     nodelist.forEach(x => {
       nodelist2.push({"name":x})})
     console.log(Data)})
+
+
 
     
 
