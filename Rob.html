@@ -6,6 +6,126 @@
     <link rel="stylesheet" href="D3_Scatterplot/css/style.css">
     <link rel="stylesheet" href="D3_Scatterplot/css/d3Style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    
+    <script type="text/javascript">
+      var canvas, ctx, flag = false,
+          prevX = 0,
+          currX = 0,
+          prevY = 0,
+          currY = 0,
+          dot_flag = false;
+  
+      var x = "black",
+          y = 2;
+      
+      function init() {
+          canvas = document.getElementById('can');
+          ctx = canvas.getContext("2d");
+          w = canvas.width;
+          h = canvas.height;
+      
+          canvas.addEventListener("mousemove", function (e) {
+              findxy('move', e)
+          }, false);
+          canvas.addEventListener("mousedown", function (e) {
+              findxy('down', e)
+          }, false);
+          canvas.addEventListener("mouseup", function (e) {
+              findxy('up', e)
+          }, false);
+          canvas.addEventListener("mouseout", function (e) {
+              findxy('out', e)
+          }, false);
+      }
+      
+      function color(obj) {
+          switch (obj.id) {
+              case "green":
+                  x = "green";
+                  break;
+              case "blue":
+                  x = "blue";
+                  break;
+              case "red":
+                  x = "red";
+                  break;
+              case "yellow":
+                  x = "yellow";
+                  break;
+              case "orange":
+                  x = "orange";
+                  break;
+              case "black":
+                  x = "black";
+                  break;
+              case "white":
+                  x = "white";
+                  break;
+          }
+          if (x == "white") y = 14;
+          else y = 2;
+      
+      }
+      
+      function draw() {
+          ctx.beginPath();
+          ctx.moveTo(prevX, prevY);
+          ctx.lineTo(currX, currY);
+          ctx.strokeStyle = x;
+          ctx.lineWidth = y;
+          ctx.stroke();
+          ctx.closePath();
+      }
+      
+      function erase() {
+          var m = confirm("Want to clear");
+          if (m) {
+              ctx.clearRect(0, 0, w, h);
+              document.getElementById("canvasimg").style.display = "none";
+          }
+      }
+      
+      function save() {
+          document.getElementById("canvasimg").style.border = "2px solid";
+          var dataURL = canvas.toDataURL();
+          document.getElementById("canvasimg").src = dataURL;
+          document.getElementById("canvasimg").style.display = "inline";
+      }
+      
+      function findxy(res, e) {
+          if (res == 'down') {
+              prevX = currX;
+              prevY = currY;
+              currX = e.clientX - canvas.offsetLeft;
+              currY = e.clientY - canvas.offsetTop;
+      
+              flag = true;
+              dot_flag = true;
+              if (dot_flag) {
+                  ctx.beginPath();
+                  ctx.fillStyle = x;
+                  ctx.fillRect(currX, currY, 2, 2);
+                  ctx.closePath();
+                  dot_flag = false;
+              }
+          }
+          if (res == 'up' || res == "out") {
+              flag = false;
+          }
+          if (res == 'move') {
+              if (flag) {
+                  prevX = currX;
+                  prevY = currY;
+                  currX = e.clientX - canvas.offsetLeft;
+                  currY = e.clientY - canvas.offsetTop;
+                  draw();
+              }
+          }
+      }
+      </script>
+
+
 
     <title>Project PRISM Home</title>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,14 +171,32 @@
     <h1>Project PRISM</h1>
     <h1>Project for Plotting to Re-imagine Inter-State Migrations</h1>
   
-<body>
-   
+<body onload="init()">
+  <div class="ball one"></div>
+  <div class="ball two"></div>
+  <div class="ball three"></div>
+  <canvas id="can" width="797" height="457.5" style="position:absolute;top:16.7%;left:26.4%;border:2px solid;"></canvas>
+  <div style="position:absolute;top:27.8%;left:68.6%;">Choose Color</div>
+  <div style="position:absolute;top:30%;left:69%;width:20px;height:20px;background:green;" id="green" onclick="color(this)"></div>
+  <div style="position:absolute;top:30%;left:70.5%;width:20px;height:20px;background:blue;" id="blue" onclick="color(this)"></div>
+  <div style="position:absolute;top:30%;left:72%;width:20px;height:20px;background:red;" id="red" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:69%;width:20px;height:20px;background:yellow;" id="yellow" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:70.5%;width:20px;height:20px;background:orange;" id="orange" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:72%;width:20px;height:20px;background:black;" id="black" onclick="color(this)"></div>
+  <div style="position:absolute;top:35.2%;left:68.6%;">Eraser</div>
+  <div style="position:absolute;top:35.5%;left:71.2%;width:20px;height:20px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+  <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
+  <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:40%;left:72%;">
+  <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:40%;left:69%;">
   <div class="container">
 
-    
+
     <div class="row">
         <div class="col-xs-12  col-md-9">
+
+          </div>
           <div id="chart">
+
           </div>
          
         </div>
@@ -69,7 +207,6 @@
         </div>
        
 
-
        <div class="row">
          <div class="col-xs-12  col-md-9">
              <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
@@ -78,6 +215,7 @@
                The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
                these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
              </p>
+
          </div>    
        </div>
      </div>
