@@ -1,6 +1,7 @@
 var svgWidth = 1000;
 var svgHeight = 600;
 
+var colorschemes = ["none", "path", "input"]
 const linklist = []
 const nodelist = []
 const nodelist2 = [];
@@ -9,6 +10,15 @@ const Data = {
     links: linklist,
     units: "persons (estimated)",
 }
+
+var selection = d3.select("#selection");
+    colorschemes.forEach(scheme => { 
+        selection.append("option").text(scheme).property("value", scheme); 
+    });
+    function choosecolors(id) {
+        
+        });
+    }
 
 var margin = {
   top: 20,
