@@ -25,11 +25,11 @@ var svg = d3.select("body")
 d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
   console.log(data)
   data.forEach(d =>{
-    d.AverageIncome = +d["Average Income"];
+    d.AverageIncome = +d["Average_Income"];
   })
 	var dataArray = [];
 	for (var d = 0; d < data.length; d++) {
-		dataArray.push(parseFloat(data[d].AverageIncome))
+		dataArray.push(parseFloat(data[d].Average_Income))
 	}
 	var minVal = d3.min(dataArray)
 	var maxVal = d3.max(dataArray)
@@ -45,7 +45,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
       var dataState = data[i].State;
 
       // Grab data value 
-      var dataValue = data[i].AverageIncome;
+      var dataValue = data[i].Average_Income;
 
       // Find the corresponding state inside the GeoJSON
       for (var j = 0; j < json.features.length; j++) {
@@ -54,7 +54,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
         if (dataState == jsonState) {
 
           // Copy the data value into the JSON
-          json.features[j].properties.AverageIncome = dataValue;
+          json.features[j].properties.Average_Income = dataValue;
 
           // Stop looking through the JSON
           break;
@@ -72,32 +72,32 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
       .style("stroke", "#fff")
       .style("stroke-width", "1")
       .style("fill", function(d) { 
-        console.log(ramp(d.properties.AverageIncome));
-        return ramp(d.properties.AverageIncome) });
+        console.log(ramp(d.properties.Average_Income));
+        return ramp(d.properties.Average_Income) });
 
     /////////////////////////
     // Step 6: Initialize tool tip
-        // ==============================
-      var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
-      .html(function(d) {
-          return (`${d.State}<br>AverageIncome: ${d.properties.AverageIncome}`);
-      });
+      //   // ==============================
+      // var toolTip = d3.tip()
+      // .attr("class", "tooltip")
+      // .offset([80, -60])
+      // .html(function(d) {
+      //     return (`${d.State}<br>AverageIncome: ${d.properties.Average_Income}`);
+      // });
 
-      // Step 7: Create tooltip in the chart
-      // ==============================
-      chartGroup.call(toolTip);
+      // // Step 7: Create tooltip in the chart
+      // // ==============================
+      // chartGroup.call(toolTip);
 
-      // Step 8: Create event listeners to display and hide the tooltip
-      // ==============================
-      circlesGroup.on("click", function(data) {
-      toolTip.show(data, this);
-      })
-      // onmouseout event
-      .on("mouseout", function(data, index) {
-          toolTip.hide(data);
-      })
+      // // Step 8: Create event listeners to display and hide the tooltip
+      // // ==============================
+      // circlesGroup.on("click", function(data) {
+      // toolTip.show(data, this);
+      // })
+      // // onmouseout event
+      // .on("mouseout", function(data, index) {
+      //     toolTip.hide(data);
+      // })
 
      //////////////////   
 		// add a legend
