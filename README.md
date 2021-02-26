@@ -9,11 +9,11 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 * Since data about multiple migrations is hard to understand; PRISM provides data visualizations as a prism through which to better understand them.
 
 ### Research Questions to Answer:
-* 
+* Where are internal migrants in the US coming from? Where are they going instead?
 
 ### Resources:
 
-Visualization: Chart.js, Sigma.js, jQuery 
+Visualization: D3, Leaflet
 https://www.chartjs.org/
 https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/
 https://jquery.com/ 
