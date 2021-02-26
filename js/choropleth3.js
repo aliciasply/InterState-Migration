@@ -1,4 +1,3 @@
-
 //Width and height of map
 var width = 960;
 var height = 500;
@@ -75,29 +74,39 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
         console.log(ramp(d.properties.Average_Income));
         return ramp(d.properties.Average_Income) });
 
-    /////////////////////////
-    // Step 6: Initialize tool tip
-      //   // ==============================
-      // var toolTip = d3.tip()
-      // .attr("class", "tooltip")
-      // .offset([80, -60])
-      // .html(function(d) {
-      //     return (`${d.State}<br>AverageIncome: ${d.properties.Average_Income}`);
-      // });
+        ///////////////
+        var tooltip = svg.append("g");
 
-      // // Step 7: Create tooltip in the chart
-      // // ==============================
-      // chartGroup.call(toolTip);
-
-      // // Step 8: Create event listeners to display and hide the tooltip
-      // // ==============================
-      // circlesGroup.on("click", function(data) {
-      // toolTip.show(data, this);
-      // })
-      // // onmouseout event
-      // .on("mouseout", function(data, index) {
-      //     toolTip.hide(data);
-      // })
+        svg.selectAll(".State")
+            .on("mouseover", function(d) {
+                tooltip.call(
+                    callout,
+                    format(data.get(d.State)) +
+                        "/\n/" +
+                        d.properties.Average_Income
+                );
+                d3.select(this)
+                    .attr("stroke", "red")
+                    .raise();
+            })
+            .on("mousemove", function() {
+                tooltip.attr(
+                    "transform",
+                    "translate(" +
+                        d3.mouse(this)[0] +
+                        "," +
+                        d3.mouse(this)[1] +
+                        ")"
+                );
+            })
+            .on("mouseout", function() {
+                tooltip.call(callout, null);
+                d3.select(this)
+                    .attr("stroke", null)
+                    .lower();
+            });
+    });
+});
 
      //////////////////   
 		// add a legend
@@ -108,7 +117,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 			.attr("width", w)
 			.attr("height", h)
 			.attr("class", "legend")
-      .attr("transform", "translate(900,300)");
+      .attr("transform", "translate(900,400)");
 
 		var legend = key.append("defs")
 			.append("svg:linearGradient")
