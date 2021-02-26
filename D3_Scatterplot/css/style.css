@@ -29,11 +29,12 @@ body {
   margin: 0;
   font-size: 16px;
 }
-/* test */
+/* navbar balls */
 .ball {
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 10px;
   border-radius: 50%;
   background-color: gray;
