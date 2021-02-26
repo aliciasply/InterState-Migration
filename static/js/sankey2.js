@@ -2,7 +2,7 @@ var svgWidth = 1000;
 var svgHeight = 600;
 
 var units = "migrants";
-}
+
 
 var margin = {
   top: 20,
