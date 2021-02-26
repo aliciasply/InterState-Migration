@@ -23,6 +23,41 @@ var svg = chart.append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);
 
+    let animation = anime.timeline({
+        duration: 1000, 
+        easing: 'easeInOutSine',  
+        loop: true
+      });           
+        
+      animation.add({
+        targets: '.one',
+        keyframes: [
+        {translateY: -50, backgroundColor: 'rgb(0, 255, 0)' },
+          {translateY: 0, backgroundColor: 'rgb(128, 128, 128)'}
+          
+        ]
+      }).add({
+        targets: '.two',
+        keyframes: [
+            {translateY: -50, backgroundColor: 'rgb(0, 0, 255)' },
+            {translateY: 0, backgroundColor: 'rgb(128, 128, 128)'}
+        ]
+      }, '-=900').add({
+        targets: '.three',
+        keyframes: [
+            {translateY: -50, backgroundColor: 'rgb(255, 0, 0)' },
+          {translateY: 0, backgroundColor: 'rgb(128, 128, 128)'}
+          
+        ]
+      }, '-=800');
+// svg.append('circle')
+//     .attr('cx', 100)
+//     .attr('cy', 100)
+//     .attr('r', 50)
+//     .attr('stroke', 'black')
+//     .attr('fill', '#69a3b2');
+
+
 // append an svg group
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);

@@ -101,13 +101,14 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 
      //////////////////   
 		// add a legend
-		var w = 140, h = 300;
+		var w = 140, h = 400;
 
 		var key = d3.select("body")
 			.append("svg")
 			.attr("width", w)
 			.attr("height", h)
-			.attr("class", "legend");
+			.attr("class", "legend")
+      .attr("transform", "translate(900,300)");
 
 		var legend = key.append("defs")
 			.append("svg:linearGradient")
@@ -135,14 +136,14 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 			.attr("transform", "translate(0,10)");
 
 		var y = d3.scaleLinear()
-			.range([h, 0])
+			.range([h - 10, 10])
 			.domain([minVal, maxVal]);
 
 		var yAxis = d3.axisRight(y);
 
 		key.append("g")
 			.attr("class", "y axis")
-			.attr("transform", "translate(50,20)")
+			.attr("transform", "translate(50,0)")
 			.call(yAxis)
   });
 });
