@@ -71,12 +71,12 @@ d3.json(stateBoundaries, function(boundaries) {
       console.log(migData)
 
       // Store variables for migration in and out of state
-      var top5In = migData.filter(m => m.indicator==="in")
-      var top5Out = migData.filter(m => m.indicator==="out")
-      console.log(top5In)
-      console.log(top5Out)
+      var top10In = migData.filter(m => m.indicator==="in")
+      var top10Out = migData.filter(m => m.indicator==="out")
+      console.log(top10In)
+      console.log(top10Out)
 
-      top5In.forEach(element => {
+      top10In.forEach(element => {
         // Filter json data by comparing to CSV then store as variable
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
         // console.log(filteredStates)
@@ -110,7 +110,7 @@ d3.json(stateBoundaries, function(boundaries) {
           style: mapStyleIn,
           onEachFeature: function(feature, layer, element) {
             layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-            + "<br><br><b>Total Migrants In:</b> " + filteredMigrants 
+            + "<br><br><b>Inbound migrant total:</b> " + filteredMigrants 
             + "<br><b>Millenials:</b> " + filteredMillenials 
             + "<br><b>Gen X:</b> " + filteredGenX
             + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
@@ -129,7 +129,7 @@ d3.json(stateBoundaries, function(boundaries) {
                 { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
             ]
           }).bindPopup("<b>State: </b>" + stateName +
-          "<br><br><b>Total Migrants out:</b> " + filteredMigrants
+          "<br><br><b>Inbound migrant total:</b> " + filteredMigrants
          + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
           + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
           + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
@@ -138,7 +138,7 @@ d3.json(stateBoundaries, function(boundaries) {
     
     })
 
-      top5Out.forEach(element => {
+      top10Out.forEach(element => {
         // Filter json data by comparing to CSV then store as variable
         var filteredStates = stateFeature.filter(d => d.properties["NAME"]===element.state)
         console.log(filteredStates)
@@ -172,7 +172,7 @@ d3.json(stateBoundaries, function(boundaries) {
             style: mapStyleOut,
             onEachFeature: function(feature, layer, element) {
               layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
-              + "<br><br><b>Total Migrants Out:</b> " + filteredMigrants 
+              + "<br><br><b>Outbound migrant total:</b> " + filteredMigrants 
               + "<br><b>Millenials:</b> " + filteredMillenials 
               + "<br><b>Gen X:</b> " + filteredGenX
               + "<br><b>Baby Boomers:</b> " + filteredBoomers)}
@@ -191,7 +191,7 @@ d3.json(stateBoundaries, function(boundaries) {
                     { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
                 ]
             }).bindPopup("<b>State: </b>" + stateName +
-              "<br><br><b>Total Migrants out:</b> " + filteredMigrants
+              "<br><br><b>Outbound migrant total:</b> " + filteredMigrants
              + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
               + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
               + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
