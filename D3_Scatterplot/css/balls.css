@@ -1,0 +1,11 @@
+/* navbar balls */
+.ball {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    float: left;
+  }

@@ -42,15 +42,15 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 
-const sankey = d3.sankey()
+var sankey = d3.sankey()
    .update(Data)
-  .nodes([nodes])
-  .links([links])
+  .nodes([Data])
+  .links([Data.links])
   .nodeId(d=> d.name)
   .nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
   .nodeWidth(15)
   .nodePadding(10)
-  .extent([[1, 5], [width - 1, height - 5]]),
+  .extent([[1, 5], [width - 1, height - 5]]);
 
   // return ({nodes, links}) => sankey({
   //   nodes: nodes.map(d => Object.assign({}, d)),
@@ -113,7 +113,7 @@ attr("stroke", "#000")
       .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
       .text(d => d.name);
 
-  return svg.node();
+  // return svg.node();
 
 
 

@@ -21,7 +21,7 @@ var svg = d3.select("body")
   .attr("height", height);
 
 // Load in my states data!
-d3.csv("../static/data/avg_income_df.csv", function (data) {
+d3.csv("../static/data/avg_income_df_flask.csv", function (data) {
   console.log(data)
   data.forEach(d => {
     d.AverageIncome = +d["Average_Income"];
@@ -96,7 +96,7 @@ d3.csv("../static/data/avg_income_df.csv", function (data) {
       .attr("width", w)
       .attr("height", h)
       .attr("class", "legend")
-      .attr("transform", "translate(900,400)");
+      .attr("transform", "translate(900,500)");
 
     var legend = key.append("defs")
       .append("svg:linearGradient")

@@ -275,7 +275,7 @@ d3.csv("./D3_Scatterplot/data/data.csv").then(function(timesData) {
         .classed("aText", true)
         .classed("active", true)
         .attr("x", 0)
-        .attr("y", 20)
+        .attr("y", 100)
         .attr("value", "health")
         .text("Health Score");
 
@@ -283,7 +283,7 @@ d3.csv("./D3_Scatterplot/data/data.csv").then(function(timesData) {
         .classed("aText", true)
         .classed("inactive", true)
         .attr("x", 0)
-        .attr("y", 40)
+        .attr("y", 20)
         .attr("value", "commute")
         .text("Commute (min)");
 
@@ -291,7 +291,7 @@ d3.csv("./D3_Scatterplot/data/data.csv").then(function(timesData) {
         .classed("aText", true)
         .classed("inactive", true)
         .attr("x", 0)
-        .attr("y", 60)
+        .attr("y", 40)
         .attr("value", "ownership")
         .text("Home Ownership (%)");
 
@@ -299,7 +299,7 @@ d3.csv("./D3_Scatterplot/data/data.csv").then(function(timesData) {
         .classed("aText", true)
         .classed("inactive", true)
         .attr("x", 0)
-        .attr("y", 80)
+        .attr("y", 60)
         .attr("value", "m_home")
         .text("Median Home Price");
         
@@ -307,33 +307,19 @@ d3.csv("./D3_Scatterplot/data/data.csv").then(function(timesData) {
         .classed("aText", true)
         .classed("inactive", true)
         .attr("x", 0)
-        .attr("y", 100)
+        .attr("y", 80)
         .attr("value", "m_income")
         .text("Median Income");
 
-    var povertyLabel = xLabelsGroup.append("text")
-        .classed("aText", true)
-        .classed("inactive", true)
-        .attr("x", 0)
-        .attr("y", 120)
-        .attr("value", "poverty")
-        .text("Poverty (%)");
 
     var tempLabel = xLabelsGroup.append("text")
         .classed("aText", true)
         .classed("inactive", true)
         .attr("x", 0)
-        .attr("y", 140)
+        .attr("y", 120)
         .attr("value", "temp")
         .text("Temperature (F)");
 
-    var precipLabel = xLabelsGroup.append("text")
-        .classed("aText", true)
-        .classed("inactive", true)
-        .attr("x", 0)
-        .attr("y", 160)
-        .attr("value", "precip")
-        .text("Precipitation (Inches)");
 
     // create group for 3 y-axis labels
     var yLabelsGroup = chartGroup.append("g")
