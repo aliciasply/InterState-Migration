@@ -96,7 +96,7 @@ d3.csv("../static/data/avg_income_df_flask.csv", function (data) {
       .attr("width", w)
       .attr("height", h)
       .attr("class", "legend")
-      .attr("transform", "translate(900,400)");
+      .attr("transform", "translate(900,500)");
 
     var legend = key.append("defs")
       .append("svg:linearGradient")
