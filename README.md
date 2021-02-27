@@ -11,7 +11,7 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 ### Research Questions to Answer:
 * Where are internal migrants in the US coming from? Where are they going instead?
 * Why are internal migrants in the US crssing state lines to move? 
-* What other push and pull factors affect thid=s phenomenon and How. 
+* What other push and pull factors affect this phenomenon and How. 
 
 |         Visualization         | Data Resources |
 |------------------------------------|------------------------------------|
