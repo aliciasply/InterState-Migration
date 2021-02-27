@@ -23,7 +23,7 @@
   cursor: pointer;
 }
 
-.hero {
+/* .hero {
   position: relative;
   height: 550px;
   padding: 20px;
@@ -32,7 +32,7 @@
   background-image: url("../images/prism.jpg");
   background-attachment: fixed;
   background-position: bottom center;
-  background-size: cover;
+  background-size: cover; */
 
 /* font size dependent on radius, see app.js */
 .stateText {
