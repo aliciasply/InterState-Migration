@@ -21,7 +21,7 @@ var svg = d3.select("body")
   .attr("height", height);
 
 // Load in my states data!
-d3.csv("../static/data/avg_income_df.csv", function (data) {
+d3.csv("../static/data/avg_income_df_flask.csv", function (data) {
   console.log(data)
   data.forEach(d => {
     d.AverageIncome = +d["Average_Income"];
