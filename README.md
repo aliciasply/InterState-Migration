@@ -10,11 +10,10 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 
 ### Research Questions to Answer:
 * Where are internal migrants in the US coming from? Where are they going instead?
-
 |         Visualization         | Data Resources |
 |------------------------------------|------------------------------------|
 |  https://www.chartjs.org/ | https://api.data.gov/ https://www.kaggle.com/ |
-| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ https://jquery.com/%7C https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources | 
+| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ https://jquery.com/%7C https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources |
 
 ### Breakdown of Tasks:
 1. Pulling data and cleaning the data 
