@@ -13,8 +13,10 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 
 |         Visualization         | Data Resources |
 |------------------------------------|------------------------------------|
-|  https://www.chartjs.org/ | https://api.data.gov/ https://www.kaggle.com/ |
-| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ | https://jquery.com/%7C https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources |
+|  https://www.chartjs.org/ | https://api.data.gov/ | 
+| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ |https://www.kaggle.com/ | 
+| https://jquery.com/%7C | https://www.zillow.com/research/data/ |
+| https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources | https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html |
 
 ### Breakdown of Tasks:
 1. Pulling data and cleaning the data 
