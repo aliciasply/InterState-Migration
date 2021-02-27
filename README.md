@@ -36,5 +36,5 @@ https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-reso
 * [Alicia](https://github.com/aliciasply)
 * [Justin](https://github.com/jacance)
 * [Robert](https://github.com/roborgain1)
-* Robert
+
 
