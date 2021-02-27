@@ -20,13 +20,17 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-sankey = {
-  const sankey = d3.sankey(),
-      .nodeId(d => d.name)
-      .nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
-      .nodeWidth(15)
-      .nodePadding(10)
-      .extent([[1, 5], [width - 1, height - 5]]);
+
+const sankey = {
+   sankey = d3.sankey()
+   .update(Data)
+  .nodes([nodes])
+  .links([links])
+  .nodeId(d=> d.name)
+  .nodeAlign(d3[`sankey${align[0].toUpperCase()}${align.slice(1)}`])
+  .nodeWidth(15)
+  .nodePadding(10)
+  .extent([[1, 5], [width - 1, height - 5]]),
   return ({nodes, links}) => sankey({
     nodes: nodes.map(d => Object.assign({}, d)),
     links: links.map(d => Object.assign({}, d))
@@ -34,6 +38,7 @@ sankey = {
 }
 const sankey = d3.sankey().sankey()
 .update(Data)
+
 var svg = d3.select("key")
   .append("svg")
   .attr("width", svgWidth)
