@@ -36,8 +36,6 @@ const sankey = {
     links: links.map(d => Object.assign({}, d))
   });
 }
-const sankey = d3.sankey().sankey()
-.update(Data)
 
 var svg = d3.select("key")
   .append("svg")
