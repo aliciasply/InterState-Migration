@@ -18,7 +18,7 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 | [ChartJs]( https://www.chartjs.org/)| [API.Data](https://api.data.gov/) | 
 | [D3-Wiki](https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/) |[Kaggle](https://www.kaggle.com/) | 
 | [Jquery](https://jquery.com/%7C) |[Zillow.Data](https://www.zillow.com/research/data/) |
-| [Average Income Graph Inspiration](https://infogram.com/average-house-prices-1hdw2jozvvke6l0)| [Choropleth Code] (https://bl.ocks.org/wboykinm/dbbe50d1023f90d4e241712395c27fb3) |
+| [Average Income Graph Inspiration](https://infogram.com/average-house-prices-1hdw2jozvvke6l0)| [Choropleth Code(https://bl.ocks.org/wboykinm/dbbe50d1023f90d4e241712395c27fb3)|
 | [Kaggle.Visualization](https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources) | [Census Data](https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html) |
 
 ### Breakdown of Tasks:
