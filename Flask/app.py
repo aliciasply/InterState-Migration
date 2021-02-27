@@ -52,12 +52,25 @@ def alicia():
 def rob():
     return render_template("Rob.html")
 
+@app.route("/Jabascript.html")
+def team():
+    return render_template("Jabascript.html")
+
+@app.route("/Comparisons.html")
+def comparison():
+    return render_template("Comparisons.html")
+
+
 # Make new routes for top 5 states then order by and group by state name
 
 # Data visualization
+
+
 @app.route("/api/v1.0/query")
 @app.route("/api/v1.0/query/origin/<state>")
 @app.route("/api/v1.0/query/<state>")
+@app.route("/Data.html")
+@app.route("/Data.html/<state>")
 def visualization(state=""):
     
     # session = Session(engine)

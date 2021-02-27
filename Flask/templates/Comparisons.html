@@ -12,7 +12,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/">Project PRISM</a>
+        <a class="navbar-brand" href="index.html">Project PRISM</a>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
@@ -48,7 +48,7 @@
   </head>
 
     <h1>Project PRISM</h1>
-    <h1>We are Team JABAscript</h1>
+    <h1>Welcome to the Results Portal</h1>
   
     <body>
    
@@ -56,42 +56,41 @@
     
         <div class="row">
           <div class="col-xs-12  col-md-9">
-            <h2>Team JABAScript</h2>
-            <p> JABAscript stands for Jake, Ali, Borg and Alex. Our Team comes from  diverse backgrounds: we have one Psychology major, one Sociology major, a Biology major, and a recruitment professional.
-                Consequently, the team represents a convergence of diverse interests, knowledge domains, skill sets, and backgrounds wh are relatively new to technology; but have a lot to offer.    
+            <h2>Summary of Results</h2>
+            <p> When Project PRISM started, the team expected confirmation of popular conceptions about how migration worksin the United States; we expected to see migraations out of supposedly expensive, overcrowded states like New York and California; and correltions between tax rates
+              and migration flows. Our data shows a far more nuanced picture of American geographic mobility than most Americans would infer from common media narratives. One, most migrants rather like their states and prefer to move within their states. Two, the reasons behind these moves would appear to be driven by factors far less abstract than tax rates. 
+              A nuanced understanding of the how, where, why, and when of US Geographic mobility would be beyond the ability of simple quantitative analysis to demystify. However, the team provides the visualizations below to help the public better see the truth  through the prism of data visualization.  
             </p>
           </div>
         </div>
     
           <div class="row">
            <div class="col-xs-12  col-md-4">
-              <a href="Justin.html"><img src="static/Images/Justin.png" class="img-fluid" alt="Justin headshot" height="300"></a>
+             <div id="scatter">
+              <a href="Alexei.html"><img src="static/Images/Sankey.png" class="img-fluid" alt="Sankey plot" height="300"></a>
+
              </div>
-             <p> Justin Acance currently leads GeoData operations at a large tech company. As a graduate of Sociology from the University of California in Berkeley, Justin has a professional interest in supplementing technology with
-                 insights from the social sciences.
+             <p> Plot 1 is a diagram showing the origins and destinations of out-of-state migration flows into US States according to estimates based on the American Community Survey (ACS) 2019 5-Year Public Use Microdata Sample (PUMS).
 
-                 <div class="col-xs-12  col-md-4">
-                    <a href="Alicia.html"><img src="static/Images/Alicia.png" class="img-fluid" alt="Alicia headshot"  height="300"></a>
-                    <p> Alicia Ly is a recruitment professional who is familiar with San Francisco's technology industry landscape. 
-                    </p>
-                </div>
-
-
-            <div>
-        </div>
-
-        <div class="row"> 
+              </p>
+           </div>
+           <div class="row">
             <div class="col-xs-12  col-md-4">
-              <a href="Alexei.html"><img src="static/Images/Alexei.png" class="img-fluid" alt="Alexei's flexshot"  height="300"></a>
+              <a href="Justin.html"><img src="static/Images/Atlas.png" class="img-fluid" alt="Justin's map" height="300"></a>
 
-              <p> Alexei Flores a new arrival to the Bay Area, is a graduate of Psychology from the University of the Philippines in Diliman. 
-                  In addition to Psychology and his new skills in data analytics, Alexei posseses a considerable background in experimwntal design and applied statistical analysis. 
-                  As a consumate nerd, Alexei is single and excited to mingle.
+              <p>PRISM's Atlas of US Migration Data shows the Top Origin and Destination States for US migrants and shows the demographic data underlying the numbers
+              </p>
+            </div>
+            <div class="col-xs-12  col-md-9">
+              <a href="Rob.html"><img src="static/Images/Scatter.png" class="img-fluid" alt="Rob's chart" height="300"></a>
+
+              <p> Plot 2 is an interavtive scatterplot where multiple factors that may affect migration are compared to outmigration or inmigration numbers. Out of multiple factors, the user may choose which ones to view to see how they are related to migration numbers.
+                This scatterplot makes it possible to look at many push and pull factors and make an informed opinion about what drives migration in America. 
               </p>
           <div class="row">
-            <div class="col-xs-12  col-md-4">
-              <a href="Rob.html"><img src="static/Images/Rob.png" class="img-fluid" alt="Rob headshot"  height="300"></a>
-              <p>Robert Anthony Orgain, dubbed "Borg", is a graduate of Biology who is interested in supplementing the tech world with skills learned from his life sciences background. Robert is pretty much single and available. 
+            <div class="col-xs-12  col-md-9">
+              <a href="Alicia.html"><img src="static/Images/Choropleth.png" class="img-fluid" alt="Alicia's chart" height="300"></a>
+              <p> Plot 3 is a choropleth map of the United States that displays the median income in each state. This map does not show migration numbers; vut allows the user to infer whether economic conditions may drive migration. 
               </p>
             </div>
             </div>
@@ -105,10 +104,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <!-- <script type="text/javascript" src="static/js/plots.js"></script> -->
-    <script src="{{url_for('static', filename='js/plots.js')}}"></script>
-
-    <!-- <script type="text/javascript" src="static/js/config.js"></script> -->
-    <script src="{{url_for('static', filename='js/config.js')}}"></script>
+    <script type="text/javascript" src="static/js/plots.js"></script>
+    <script type="text/javascript" src="static/js/config.js"></script>
   </body>
 </html>
