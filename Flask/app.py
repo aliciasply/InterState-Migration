@@ -26,6 +26,7 @@ app = Flask(__name__)
 
 # Home page
 @app.route("/")
+@app.route("/index.html")
 def home():
     print("Server received request for 'Home' page...")
     # return (
