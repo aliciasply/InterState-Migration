@@ -11,17 +11,12 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 ### Research Questions to Answer:
 * Where are internal migrants in the US coming from? Where are they going instead?
 
-### Resources:
-
-Visualization: D3, Leaflet
-https://www.chartjs.org/
-https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/
-https://jquery.com/ 
-
-Data Resources: 
-https://api.data.gov/
-https://www.kaggle.com/
-https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources
+|         Visualization         | Data Resources |
+|------------------------------------|------------------------------------|
+|  https://www.chartjs.org/ | https://api.data.gov/ | 
+| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ |https://www.kaggle.com/ | 
+| https://jquery.com/%7C | https://www.zillow.com/research/data/ |
+| https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources | https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html |
 
 ### Breakdown of Tasks:
 1. Pulling data and cleaning the data 
@@ -32,8 +27,9 @@ https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-reso
 6. PowerPoint slide to present at the end of the project.
 
 ### Data Analytics Team:
-* Alexei
-* Alicia
-* Justin
-* Robert
+* [Alexei](https://github.com/CaliFlowers)
+* [Alicia](https://github.com/aliciasply)
+* [Justin](https://github.com/jacance)
+* [Robert](https://github.com/roborgain1)
+
 
