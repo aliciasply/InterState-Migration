@@ -14,14 +14,14 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 ### Resources:
 
 Visualization: D3, Leaflet
-https://www.chartjs.org/
-https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/
-https://jquery.com/ 
+| https://www.chartjs.org/ | 
+| https://d3-wiki.readthedocs.io/zh_CN/master/Gallery/ |
+| https://jquery.com/ |
 
 Data Resources: 
-https://api.data.gov/
-https://www.kaggle.com/
-https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources
+| https://api.data.gov/ |
+| https://www.kaggle.com/ |
+| https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-resources |
 
 ### Breakdown of Tasks:
 1. Pulling data and cleaning the data 
