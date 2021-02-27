@@ -42,8 +42,7 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 
-const sankey = {
-   sankey = d3.sankey()
+const sankey = d3.sankey()
    .update(Data)
   .nodes([nodes])
   .links([links])
@@ -53,11 +52,10 @@ const sankey = {
   .nodePadding(10)
   .extent([[1, 5], [width - 1, height - 5]]),
 
-  return ({nodes, links}) => sankey({
-    nodes: nodes.map(d => Object.assign({}, d)),
-    links: links.map(d => Object.assign({}, d))
-  });
-}
+  // return ({nodes, links}) => sankey({
+  //   nodes: nodes.map(d => Object.assign({}, d)),
+  //   links: links.map(d => Object.assign({}, d))
+  // });
 
 var svg = d3.select("key")
   .append("svg")
@@ -79,7 +77,7 @@ attr("stroke", "#000")
     .append("title")
       .text(d => `${d.name}\n${format(d.value)}`);
 
-      onst link = svg.append("g")
+    const link = svg.append("g")
       .attr("fill", "none")
       .attr("stroke-opacity", 0.5)
     .selectAll("g")
@@ -116,7 +114,7 @@ attr("stroke", "#000")
       .text(d => d.name);
 
   return svg.node();
-}
+
 
 
 
