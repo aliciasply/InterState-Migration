@@ -3,17 +3,142 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="stylesheet" href="D3_Scatterplot/css/style.css"> -->
+    <script src="{{url_for('static', filename='css/style.css')}}"></script>
+    
+    <!-- <link rel="stylesheet" href="D3_Scatterplot/css/d3Style.css"> -->
+    <script src="{{url_for('static', filename='css/d3Style.css')}}"></script>
 
+    <!-- <script src="{{url_for('static', filename='css/d3Style.css')}}"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="D3_Scatterplot/css/style.css">
-    <link rel="stylesheet" href="D3_Scatterplot/css/d3Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+    
+    <script type="text/javascript">
+      var canvas, ctx, flag = false,
+          prevX = 0,
+          currX = 0,
+          prevY = 0,
+          currY = 0,
+          dot_flag = false;
+  
+      var x = "black",
+          y = 2;
+      
+      function init() {
+          canvas = document.getElementById('can');
+          ctx = canvas.getContext("2d");
+          w = canvas.width;
+          h = canvas.height;
+      
+          canvas.addEventListener("mousemove", function (e) {
+              findxy('move', e)
+          }, false);
+          canvas.addEventListener("mousedown", function (e) {
+              findxy('down', e)
+          }, false);
+          canvas.addEventListener("mouseup", function (e) {
+              findxy('up', e)
+          }, false);
+          canvas.addEventListener("mouseout", function (e) {
+              findxy('out', e)
+          }, false);
+      }
+      
+      function color(obj) {
+          switch (obj.id) {
+              case "green":
+                  x = "green";
+                  break;
+              case "blue":
+                  x = "blue";
+                  break;
+              case "red":
+                  x = "red";
+                  break;
+              case "yellow":
+                  x = "yellow";
+                  break;
+              case "orange":
+                  x = "orange";
+                  break;
+              case "black":
+                  x = "black";
+                  break;
+              case "white":
+                  x = "white";
+                  break;
+          }
+          if (x == "white") y = 14;
+          else y = 2;
+      
+      }
+      
+      function draw() {
+          ctx.beginPath();
+          ctx.moveTo(prevX, prevY);
+          ctx.lineTo(currX, currY);
+          ctx.strokeStyle = x;
+          ctx.lineWidth = y;
+          ctx.stroke();
+          ctx.closePath();
+      }
+      
+      function erase() {
+          var m = confirm("Want to clear");
+          if (m) {
+              ctx.clearRect(0, 0, w, h);
+              document.getElementById("canvasimg").style.display = "none";
+          }
+      }
+      
+      function save() {
+          document.getElementById("canvasimg").style.border = "2px solid";
+          var dataURL = canvas.toDataURL();
+          document.getElementById("canvasimg").src = dataURL;
+          document.getElementById("canvasimg").style.display = "inline";
+      }
+      
+      function findxy(res, e) {
+          if (res == 'down') {
+              prevX = currX;
+              prevY = currY;
+              currX = e.clientX - canvas.offsetLeft;
+              currY = e.clientY - canvas.offsetTop;
+      
+              flag = true;
+              dot_flag = true;
+              if (dot_flag) {
+                  ctx.beginPath();
+                  ctx.fillStyle = x;
+                  ctx.fillRect(currX, currY, 2, 2);
+                  ctx.closePath();
+                  dot_flag = false;
+              }
+          }
+          if (res == 'up' || res == "out") {
+              flag = false;
+          }
+          if (res == 'move') {
+              if (flag) {
+                  prevX = currX;
+                  prevY = currY;
+                  currX = e.clientX - canvas.offsetLeft;
+                  currY = e.clientY - canvas.offsetTop;
+                  draw();
+              }
+          }
+      }
+      </script>
+
+
+
     <title>Project PRISM Home</title>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.html">Project PRISM</a>
+        <a class="navbar-brand" href="/">Project PRISM</a>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
@@ -24,7 +149,7 @@
               Team JABAscript
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="Comparisons.html"> About the Team</a>
+              <a class="dropdown-item" href="Jabascript.html"> About the Team</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="Justin.html">Justin Acance</a>
               <a class="dropdown-item" href="Alicia.html">Alicia Ly</a>
@@ -41,53 +166,75 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="Alexei.html">Migration Flows in the US</a>
               <a class="dropdown-item" href="Justin.html">An Atlas of US Migration Data</a>
-              <a class="dropdown-item" href="Borg.html">Robert "Borg" Orgain</a>
-              <a class="dropdown-item" href="Alicia.html">A Map of </a>
+              <a class="dropdown-item" href="Rob.html">Migration Factors</a>
+              <a class="dropdown-item" href="Alicia.html">A Map of Median Income</a>
             </div>
           </li>
+          <div class="ball one"></div>
+          <div class="ball two"></div>
+          <div class="ball three"></div>
       </nav>
   </head>
 
-    <h1>Project PRISM</h1>
+    <h1 style="text-indent: 40px">Project PRISM</h1>
     <h1>Project for Plotting to Re-imagine Inter-State Migrations</h1>
   
-<body>
-   
+<body onload="init()">
+
+  <canvas id="can" width="797" height="457.5" style="position:absolute;top:16.7%;left:26.4%;border:0px solid;"></canvas>
+  <div style="position:absolute;top:27.8%;left:68.6%;">Choose Color</div>
+  <div style="position:absolute;top:30%;left:69%;width:20px;height:20px;background:rgb(86, 255, 19);" id="green" onclick="color(this)"></div>
+  <div style="position:absolute;top:30%;left:70.5%;width:20px;height:20px;background:blue;" id="blue" onclick="color(this)"></div>
+  <div style="position:absolute;top:30%;left:72%;width:20px;height:20px;background:red;" id="red" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:69%;width:20px;height:20px;background:yellow;" id="yellow" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:70.5%;width:20px;height:20px;background:orange;" id="orange" onclick="color(this)"></div>
+  <div style="position:absolute;top:32%;left:72%;width:20px;height:20px;background:black;" id="black" onclick="color(this)"></div>
+  <div style="position:absolute;top:35.2%;left:68.6%;">Eraser</div>
+  <div style="position:absolute;top:35.5%;left:71.2%;width:20px;height:20px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+  <img id="canvasimg" style="position:absolute;top:10%;left:52%;" style="display:none;">
+  <input type="button" value="save" id="btn" size="30" onclick="save()" style="position:absolute;top:40%;left:72%;">
+  <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:40%;left:69%;">
   <div class="container">
 
-    
+
     <div class="row">
         <div class="col-xs-12  col-md-9">
-          <div id="scatter">
+
+          </div>
+          <div id="chart">
+
           </div>
          
         </div>
         </div>
         <div class="col-xs-12  col-md-3">
-            <p>Plot 1.2: this plot shows ... 
+            <p class="tab">Plot 1.2: this plot shows ... 
             </p>
         </div>
        
 
-
        <div class="row">
          <div class="col-xs-12  col-md-9">
-             <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
-               The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
-               On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
-               The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
-               these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
+             <p class="tab"> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
+                The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
+                On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
+                the states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
+              these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
              </p>
+
          </div>    
        </div>
      </div>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
-    <script type="text/javascript" src="D3_ScatterPlot/js/app.js"></script>
+    <!-- <script type="text/javascript" src="D3_ScatterPlot/js/app.js"></script> -->
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
   </body>
 </html>
+
+
+

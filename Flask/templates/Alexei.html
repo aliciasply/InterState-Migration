@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="astatic/css/sankey.css">
 
     <title>Migration Flows in the United States</title>
     <style>
@@ -36,7 +37,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="index.html">Project PRISM</a>
+        <a class="navbar-brand" href="/">Project PRISM</a>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
@@ -47,7 +48,7 @@
               Team JABAscript
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="Comparisons.html"> About the Team</a>
+              <a class="dropdown-item" href="Jabascript.html"> About the Team</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="Justin.html">Justin Acance</a>
               <a class="dropdown-item" href="Alicia.html">Alicia Ly</a>
@@ -64,15 +65,15 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="Alexei.html">Migration Flows in the US</a>
               <a class="dropdown-item" href="Justin.html">An Atlas of US Migration Data</a>
-              <a class="dropdown-item" href="Rob.html">Robert "Borg" Orgain</a>
-              <a class="dropdown-item" href="Alicia.html">A Map of </a>
+              <a class="dropdown-item" href="Rob.html">Migration Factors</a>
+              <a class="dropdown-item" href="Alicia.html">A Map of Median Income</a>
             </div>
           </li>
       </nav>
   </head>
 
     <h1>Project PRISM</h1>
-    <h1>Project for Plotting to Re-imagine Inter-State Migrations</h1>
+    <h1>Visualizing Migration Flows in the United States</h1>
   
 <body>
    
@@ -95,11 +96,7 @@
 
        <div class="row">
          <div class="col-xs-12  col-md-9">
-             <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
-               The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
-               On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
-               The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
-               these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
+             <p> The sankey chart above shows that internal migration in the United States is not as simple a phenomenon as most assume.
              </p>
          </div>    
        </div>
@@ -111,8 +108,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript" src="static/js/skey.js"></script>
-    <script type="text/javascript" src="static/js/config.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="https://unpkg.com/d3-array@1"></script>
+    <script src="https://unpkg.com/d3-collection@1"></script>
+    <script src="https://unpkg.com/d3-path@1"></script>
+    <script src="https://unpkg.com/d3-shape@1"></script>
+    <script src="https://unpkg.com/d3-sankey@0"></script>
+    <script type="text/javascript" src="static/js/sankey3.js"></script>
+    <script type="text/javascript" src="static/js/sankeyfunctions.js"></script>
+    <!-- <script type="text/javascript" src="static/js/config.js"></script> -->
   </body>
 </html>

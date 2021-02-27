@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Project PRISM Home</title>
+    <style type="text/css">
+
+      /* Legend Font Style 
+      body {
+        font: 11px sans-serif;
+        background-color: #ffffff;
+      }
+      */
+              
+      /* Legend Position Style */
+      .legend {
+        position:absolute;
+        left:20px;
+        top:30px;
+      }
+      
+      .axis text {
+        font: 10px sans-serif;
+      }
+      
+      .axis line, .axis path {
+        fill: none;
+        stroke: rgb(167, 87, 87);
+        shape-rendering: crispEdges;
+      }
+      
+      </style>
+  </head>
+
+  
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="index.html">Project PRISM</a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
+          </li>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Team JABAscript
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="Jabascript.html"> About the Team</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="MaxTemp.html">Justin Acance</a>
+            <a class="dropdown-item" href="Humidity.html">Alicia Ly</a>
+            <a class="dropdown-item" href="Cloudiness.html">Robert "Borg" Orgain</a>
+            <a class="dropdown-item" href="Windspeed.html">Alexei Flores</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Visualizations
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="Comparisons.html"> Results Home</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="Alexei.html">Migration Flows in the US</a>
+            <a class="dropdown-item" href="Justin.html">An Atlas of US Migration Data</a>
+            <a class="dropdown-item" href="Rob.html">Robert "Borg" Orgain</a>
+            <a class="dropdown-item" href="Alicia.html">A Map of </a>
+          </div>
+        </li>
+    </nav>
+
+    <h1>Project PRISM</h1>
+    <h1>Project for Plotting to Re-imagine Inter-State Migrations</h1>
+    <div class="container">
+
+    
+    <div class="row">
+        <div class="col-xs-12  col-md-12">
+          <div id="map">
+            visuaulzation goes there. 
+
+
+          </div>
+         
+       <div class="row">
+         <div class="col-xs-12  col-md-9">
+             <p> The chart above shows that a weak to nonexistent relationship exists between a state's poverty rate, and its healthcare access rate.
+               The scatterplot for healthcare rate and poverty rate suggests that the two may not share a meaninful link despite a common assumption that poverty precludes healthcare access. 
+               On one end of the poverty rate continuum is NH, at nearly zero percentpoverty rate, and around 11 percent health care access rate. On the other end is New Mexico which has a state povery rate of over 20 percent; and a healthcare access rate of 16 percent
+               The states of the Deep South (e.g. Louisiana, Arkansas, Alabama, Tennessee and South Carolina) all fall on the higher end of the spectrum for tate poverty rates; at the same time, 
+               these states maintain respectable healthcare access rates;which is consistent with the weak to nonexistent relationship observed in general. 
+             </p>
+         </div>    
+       </div>
+     </div>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="js/choropleth.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+  </body>
+</html>

@@ -1,91 +1,112 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <title>Migration Map: Top 10 States by Generation</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="css/migrationmapstyle.css">
-  
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="index.html">Project PRISM</a>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
+    <title>Project PRISM Home</title>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/">Project PRISM</a>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="Data.html">Data <span class="sr-only">(current)</span></a>
+            </li>
           </li>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Team JABAscript
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="Comparisons.html"> About the Team</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="Justin.html">Justin Acance</a>
-            <a class="dropdown-item" href="Alicia.html">Alicia Ly</a>
-            <a class="dropdown-item" href="Rob.html">Robert Orgain</a>
-            <a class="dropdown-item" href="Alexei.html">Alexei Flores</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Visualizations
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="Comparisons.html"> Results Home</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="Alexei.html">Migration Flows in the US</a>
-            <a class="dropdown-item" href="Justin.html">An Atlas of US Migration Data</a>
-            <a class="dropdown-item" href="Rob.html">Migration Factors</a>
-            <a class="dropdown-item" href="Alicia.html">A Map of Median Income</a>
-          </div>
-        </li>
-    </nav>
-
-
-  
-</head>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Team JABAscript
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="Jabascript.html"> About the Team</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Justin.html">Justin Acance</a>
+              <a class="dropdown-item" href="Alicia.html">Alicia Ly</a>
+              <a class="dropdown-item" href="Rob.html">Robert Orgain</a>
+              <a class="dropdown-item" href="Alexei.html">Alexei Flores</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Visualizations
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="Comparisons.html"> Results Home</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="Alexei.html">Migration Flows in the US</a>
+              <a class="dropdown-item" href="Justin.html">An Atlas of US Migration Data</a>
+              <a class="dropdown-item" href="Rob.html">Migration Factors</a>
+              <a class="dropdown-item" href="Alicia.html">A Map of Median Income</a>
+            </div>
+          </li>
+      </nav>
+  </head>
 
 <body>
+
+
 
   <!-- The div that holds our map -->
   <h1>Project PRISM</h1>
     <h1>Atlas of US Migration Data</h1>
-  <div style="width:1200px; height:800px" id="migrationmapid"></div>
+
+    <div class="row">
+      <div class="col-xs-12  col-md-12">
+        <div style="width:1200px; height:800px" id="migrationmapid"></div>
+      </div>
+    </div>
+          <div class="row">
+            <div class="col-xs-12  col-md-3"></div>
+            <div class="col-xs-12  col-md-6">
+              <br>
+              <p text-align: justified>The Atlas of American Migration above limits its analysis to fewer than 15 states representing the top 10 states in terms of incoming and top 10 in terms of outgoing volume.
+                The Atlas looks at data at two levels:<br><br>
+                1. It looks at WHERE migration is occurring<br>
+                2. It looks at WHO is migrating.<br><br>
+                A glance at the Atlas shows that the proffered destinations for in-migration are vibrant coastal states with growing metropolitan areas; while the top sources of out-migration are also 8 of these ten states.
+                The substantial overlap between source and destination states suggests that out-and in-migration may be related phenomena. In addition, PRISM's atlas also features demographic breakdowns of these high-volume states. Of the four generations that the PRISM dataset considers, Millenials were the most geographically mobile generation for the period of the latest 5-year ACS.
+                One theory to explain this may be that millenials, who range from their twenties to middle-age, are in developmental life-stages typically associated with mobility: early to mid-adulthood. Early adulthood in.America is associated with employment-seeking and marriage while middle-age is associated with re-invention.
+                In addition, many Millenials were held back by the 2008 recession.; and these numbers suggest a catch-up phase. Sure enough, many Millenials appear to be entering dynamic coastal states with growing economies while also leaving the same states to start families in cheaper locales
+                For Boomers and Xers, late adulthood is associated with retirement so retirees appear to be leaving expensesive states to settle in favored retirement hubs like Florida and Arizona.</p>
+              </div>
+              </div>
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
     <script src="http://sashakavun.github.io/leaflet-canvasicon/leaflet-canvasicon.js"></script>
-    <script type="text/javascript" src="js/leaflet-piechart.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin="" />
+    <!-- <script type="text/javascript" src="../js/leaflet-piechart.js"></script> -->
+    <script src="{{url_for('static', filename='js/leaflet-piechart.js')}}"></script>
     <script type="text/javascript"></script>
 
   <!-- D3 JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
   <!-- API key -->
-  <script type="text/javascript" src="Code/config.js"></script>
+  <!-- <script type="text/javascript" src="../Code/config.js"></script> -->
+  <script src="{{url_for('static', filename='js/config.js')}}"></script>
   
   <!-- <script type="text/javascript" src="static/js/config.js"></script> -->
   <!-- Our JavaScript -->
-  <script type="text/javascript" src="js/migration_map_gen.js"></script>
-<!-- Code injected by live-server -->
+  <!-- <script type="text/javascript" src="../js/migration_map_gen.js"></script> -->
+  <script src="{{url_for('static', filename='js/migration_map_flask.js')}}"></script>
+
+  <!-- Leaflet CSS -->
+
+
+  <!-- Our CSS -->
+  <!-- <link rel="stylesheet" type="text/css" href="../css/migrationmapstyle.css"> -->
+  <script src="{{url_for('static', filename='css/migrationmapstyle.css')}}"></script>
+
 </body>
 </html>
