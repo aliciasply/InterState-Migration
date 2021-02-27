@@ -21,21 +21,21 @@ var svg = d3.select("body")
   .attr("height", height);
 
 // Load in my states data!
-d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
+d3.csv("/Data/Alicia/avg_income_df.csv", function (data) {
   console.log(data)
-  data.forEach(d =>{
+  data.forEach(d => {
     d.AverageIncome = +d["Average_Income"];
   })
-	var dataArray = [];
-	for (var d = 0; d < data.length; d++) {
-		dataArray.push(parseFloat(data[d].Average_Income))
-	}
-	var minVal = d3.min(dataArray)
-	var maxVal = d3.max(dataArray)
-	var ramp = d3.scaleLinear().domain([minVal,maxVal]).range([lowColor,highColor])
-	
+  var dataArray = [];
+  for (var d = 0; d < data.length; d++) {
+    dataArray.push(parseFloat(data[d].Average_Income))
+  }
+  var minVal = d3.min(dataArray)
+  var maxVal = d3.max(dataArray)
+  var ramp = d3.scaleLinear().domain([minVal, maxVal]).range([lowColor, highColor])
+
   // Load GeoJSON data and merge with states data
-  d3.json("/Data/Alicia/us-states.json", function(json) {
+  d3.json("/Data/Alicia/us-states.json", function (json) {
 
     // Loop through each state data value in the .csv file
     for (var i = 0; i < data.length; i++) {
@@ -43,7 +43,7 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
       // Grab State Name
       var dataState = data[i].State;
 
-      // Grab data value 
+      // Grab data value
       var dataValue = data[i].Average_Income;
 
       // Find the corresponding state inside the GeoJSON
@@ -63,86 +63,75 @@ d3.csv("/Data/Alicia/avg_income_df.csv", function(data) {
 
     // Bind the data to the SVG and create one path per GeoJSON feature
     console.log(json.features)
-    svg.selectAll("path")
+    var stateLines = svg.selectAll("path")
       .data(json.features)
       .enter()
       .append("path")
       .attr("d", path)
       .style("stroke", "#fff")
       .style("stroke-width", "1")
-      .style("fill", function(d) { 
-        console.log(ramp(d.properties.Average_Income));
-        return ramp(d.properties.Average_Income) });
+      .style("fill", function (d) {
+        console.log(d.properties.name, d.properties.Average_Income, ramp(d.properties.Average_Income));
+        return ramp(d.properties.Average_Income)
+      });
+    var toolTip = d3.select("body").append("div").attr("class", "tooltip");
+    // var toolTip = d3.select("#tooltip");
+    stateLines.on("mouseover", function (d, i) {
+    // stateLines.on("click", function (d, i) {
+      console.log(d.properties);
+      d3.select("#val").text(`x=${d3.event.pageX}, y=${d3.event.pageY}`)
+      toolTip.style("display", "block");
+      toolTip.html(`<strong>${d.properties.name}</strong><hr>${d.properties.Average_Income}`)
+        .style("left", d3.event.pageX + "px")
+        .style("top", d3.event.pageY + "px");
+    });
+      
+    
+    //////////////////
+    // add a legend
+    var w = 140, h = 400;
 
-    /////////////////////////
-    // Step 6: Initialize tool tip
-      //   // ==============================
-      // var toolTip = d3.tip()
-      // .attr("class", "tooltip")
-      // .offset([80, -60])
-      // .html(function(d) {
-      //     return (`${d.State}<br>AverageIncome: ${d.properties.Average_Income}`);
-      // });
-
-      // // Step 7: Create tooltip in the chart
-      // // ==============================
-      // chartGroup.call(toolTip);
-
-      // // Step 8: Create event listeners to display and hide the tooltip
-      // // ==============================
-      // circlesGroup.on("click", function(data) {
-      // toolTip.show(data, this);
-      // })
-      // // onmouseout event
-      // .on("mouseout", function(data, index) {
-      //     toolTip.hide(data);
-      // })
-
-     //////////////////   
-		// add a legend
-		var w = 140, h = 400;
-
-		var key = d3.select("body")
-			.append("svg")
-			.attr("width", w)
-			.attr("height", h)
-			.attr("class", "legend")
+    var key = d3.select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h)
+      .attr("class", "legend")
       .attr("transform", "translate(900,400)");
 
-		var legend = key.append("defs")
-			.append("svg:linearGradient")
-			.attr("id", "gradient")
-			.attr("x1", "100%")
-			.attr("y1", "0%")
-			.attr("x2", "100%")
-			.attr("y2", "100%")
-			.attr("spreadMethod", "pad");
+    var legend = key.append("defs")
+      .append("svg:linearGradient")
+      .attr("id", "gradient")
+      .attr("x1", "100%")
+      .attr("y1", "0%")
+      .attr("x2", "100%")
+      .attr("y2", "100%")
+      .attr("spreadMethod", "pad");
 
-		legend.append("stop")
-			.attr("offset", "0%")
-			.attr("stop-color", highColor)
-			.attr("stop-opacity", 1);
-			
-		legend.append("stop")
-			.attr("offset", "100%")
-			.attr("stop-color", lowColor)
-			.attr("stop-opacity", 1);
+    legend.append("stop")
+      .attr("offset", "0%")
+      .attr("stop-color", highColor)
+      .attr("stop-opacity", 1);
 
-		key.append("rect")
-			.attr("width", w - 100)
-			.attr("height", h)
-			.style("fill", "url(#gradient)")
-			.attr("transform", "translate(0,10)");
+    legend.append("stop")
+      .attr("offset", "100%")
+      .attr("stop-color", lowColor)
+      .attr("stop-opacity", 1);
 
-		var y = d3.scaleLinear()
-			.range([h - 10, 10])
-			.domain([minVal, maxVal]);
+    key.append("rect")
+      .attr("width", w - 100)
+      .attr("height", h)
+      .style("fill", "url(#gradient)")
+      .attr("transform", "translate(0,10)");
 
-		var yAxis = d3.axisRight(y);
+    var y = d3.scaleLinear()
+      .range([h - 10, 10])
+      .domain([minVal, maxVal]);
 
-		key.append("g")
-			.attr("class", "y axis")
-			.attr("transform", "translate(50,0)")
-			.call(yAxis)
+    var yAxis = d3.axisRight(y);
+
+    key.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(50,0)")
+      .call(yAxis)
   });
 });
