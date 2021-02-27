@@ -32,8 +32,9 @@ https://www.kaggle.com/kaushiksuresh147/data-visualization-cheat-cheats-and-reso
 6. PowerPoint slide to present at the end of the project.
 
 ### Data Analytics Team:
-* Alexei
-* Alicia
-* Justin
+* [Alexei](https://github.com/CaliFlowers)
+* [Alicia](https://github.com/aliciasply)
+* [Justin](https://github.com/jacance)
+* [Robert](https://github.com/roborgain1)
 * Robert
 
