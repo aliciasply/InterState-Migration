@@ -40,3 +40,7 @@ body {
   background-color: gray;
   float: left;
 }
+
+.tab {
+  margin-left: 100px;
+}
