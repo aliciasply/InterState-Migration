@@ -100,7 +100,7 @@ attr("stroke", "#000")
       .attr("stroke-width", d => Math.max(1, d.width));
 
       ink.append("title")
-      .text(d => `${d.source.name} → ${d.destination.name}\n${format(d.value)}`);
+      .text(d => `${d.source.name} → ${d.destination}\n${format(d.value)}`);
       svg.append("g")
       .attr("font-family", "sans-serif")
       .attr("font-size", 10)
