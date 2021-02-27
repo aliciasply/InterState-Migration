@@ -10,6 +10,27 @@ const Data = {
     units: "persons (estimated)",
 }
 
+d3.csv("static/data/sankey.csv").then(function(migrantData) {
+  console.log (migrantData)
+  allnodes = []
+  migrantData.forEach(function(data) {
+      data.Total = +data.Total;
+   var link = {
+     Source: data.Origin,
+     Destination: data.To_State,
+     Value: data.Total,
+   }
+  linklist.push(link)
+
+  var node = {
+      name: data.Origin}
+  if (!nodelist.includes(node.name)){ nodelist.push(node.name);}
+
+})
+  nodelist.forEach(x => {
+    nodelist2.push({"name":x})})
+  console.log(Data)})
+
 var margin = {
   top: 20,
   right: 40,
@@ -99,26 +120,6 @@ attr("stroke", "#000")
 
 
 
-d3.csv("static/data/sankey.csv").then(function(migrantData) {
-    console.log (migrantData)
-    allnodes = []
-    migrantData.forEach(function(data) {
-        data.Total = +data.Total;
-     var link = {
-       Source: data.Origin,
-       Destination: data.To_State,
-       Value: data.Total,
-     }
-    linklist.push(link)
-
-    var node = {
-        name: data.Origin}
-    if (!nodelist.includes(node.name)){ nodelist.push(node.name);}
-  
-  })
-    nodelist.forEach(x => {
-      nodelist2.push({"name":x})})
-    console.log(Data)})
 
 
 
