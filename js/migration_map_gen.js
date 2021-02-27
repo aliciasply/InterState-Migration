@@ -86,8 +86,8 @@ d3.json(stateBoundaries, function(boundaries) {
         filteredMigrants = parseInt(filteredStates[0]['properties']['MigrantCountIn'])
         
         // Generations JSON
-        filteredStates[0]['properties']['MillenialsCountIn'] = element.millenials
-        filteredMillenials = parseInt(filteredStates[0]['properties']['MillenialsCountIn'])
+        filteredStates[0]['properties']['MillennialsCountIn'] = element.millennials
+        filteredMillennials = parseInt(filteredStates[0]['properties']['MillennialsCountIn'])
 
         filteredStates[0]['properties']['GenXCountIn'] = element.genx
         filteredGenX = parseInt(filteredStates[0]['properties']['GenXCountIn'])
@@ -111,7 +111,7 @@ d3.json(stateBoundaries, function(boundaries) {
           onEachFeature: function(feature, layer, element) {
             layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
             + "<br><br><b>Inbound migrant total:</b> " + filteredMigrants.toLocaleString() 
-            + "<br><b>Millenials:</b> " + filteredMillenials.toLocaleString() 
+            + "<br><b>Millennials:</b> " + filteredMillennials.toLocaleString() 
             + "<br><b>Gen X:</b> " + filteredGenX.toLocaleString()
             + "<br><b>Baby Boomers:</b> " + filteredBoomers.toLocaleString())}
              
@@ -124,13 +124,13 @@ d3.json(stateBoundaries, function(boundaries) {
           {
               radius: 30,
               data: [
-                { name: 'Millenials (25-40yo)', value: element.millenials, style: millPie},
+                { name: 'Millennials (25-40yo)', value: element.millennials, style: millPie},
                 { name: 'Gen X (41-56)', value: element.genx, style: genxPie },
                 { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
             ]
           }).bindPopup("<b>State: </b>" + stateName +
           "<br><br><b>Inbound migrant total:</b> " + filteredMigrants.toLocaleString()
-         + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
+         + "<br><b>Millennials:</b> " + Math.round((filteredMillennials/filteredMigrants)*100) + "%" 
           + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
           + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
         ).addTo(layers["piechartin"]);
@@ -149,8 +149,8 @@ d3.json(stateBoundaries, function(boundaries) {
         // console.log(filteredMigrants)
         
         // Generations JSON
-        filteredStates[0]['properties']['MillenialsCountOut'] = element.millenials
-        filteredMillenials = parseInt(filteredStates[0]['properties']['MillenialsCountOut'])
+        filteredStates[0]['properties']['MillennialsCountOut'] = element.millennials
+        filteredMillennials = parseInt(filteredStates[0]['properties']['MillennialsCountOut'])
 
         filteredStates[0]['properties']['GenXCountOut'] = element.genx
         filteredGenX = parseInt(filteredStates[0]['properties']['GenXCountOut'])
@@ -173,7 +173,7 @@ d3.json(stateBoundaries, function(boundaries) {
             onEachFeature: function(feature, layer, element) {
               layer.bindPopup("<b>State:</b> " + feature.properties['NAME'] 
               + "<br><br><b>Outbound migrant total:</b> " + filteredMigrants.toLocaleString() 
-              + "<br><b>Millenials:</b> " + filteredMillenials.toLocaleString() 
+              + "<br><b>Millennials:</b> " + filteredMillennials.toLocaleString() 
               + "<br><b>Gen X:</b> " + filteredGenX.toLocaleString()
               + "<br><b>Baby Boomers:</b> " + filteredBoomers.toLocaleString())}
                
@@ -186,13 +186,13 @@ d3.json(stateBoundaries, function(boundaries) {
             {
                 radius: 30,
                 data: [
-                    { name: 'Millenials (25-40yo)', value: element.millenials, style: millPie},
+                    { name: 'Millennials (25-40yo)', value: element.millennials, style: millPie},
                     { name: 'Gen X (41-56)', value: element.genx, style: genxPie },
                     { name: 'Baby Boomers (57-75)', value: element.boomers, style: boomPie }
                 ]
             }).bindPopup("<b>State: </b>" + stateName +
               "<br><br><b>Outbound migrant total:</b> " + filteredMigrants.toLocaleString()
-             + "<br><b>Millenials:</b> " + Math.round((filteredMillenials/filteredMigrants)*100) + "%" 
+             + "<br><b>Millennials:</b> " + Math.round((filteredMillennials/filteredMigrants)*100) + "%" 
               + "<br><b>Gen X:</b> " + Math.round((filteredGenX/filteredMigrants)*100) + "%"
               + "<br><b>Baby Boomers:</b> " + Math.round((filteredBoomers/filteredMigrants)*100) + "%"
             ).addTo(layers["piechartout"]);
