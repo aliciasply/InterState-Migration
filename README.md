@@ -35,4 +35,6 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 * [Justin](https://github.com/jacance)
 * [Robert](https://github.com/roborgain1)
 
+### A Guide to the Outputs
+[Prism](Images/6 Atlas inbound.jpg)
 
