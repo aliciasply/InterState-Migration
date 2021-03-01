@@ -35,6 +35,7 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 * [Justin](https://github.com/jacance)
 * [Robert](https://github.com/roborgain1)
 
-### A Guide to the Outputs
+### Sample Outputs
 [PRISM Map of Median Incomes in the United States](Images/Choropleth.png)
+[PRISM Atlas of US ](Images/6 ATLAS inbound.png)
 
