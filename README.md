@@ -1,4 +1,4 @@
-##Project for Plotting to Reimagine InterState Migrations (Project PRISM) 
+## Project for Plotting to Reimagine InterState Migrations (Project PRISM) 
 
 ![Prism](Images/prism.jpg)
 
@@ -36,6 +36,6 @@ Project PRISM aims to combat misconceptions about the complex phenomenon of inte
 * [Robert](https://github.com/roborgain1)
 
 ### Sample Outputs
-[PRISM Map of Median Incomes in the United States](Images/Choropleth.png)
-[PRISM Atlas of US ](Images/6 ATLAS inbound.png)
+![PRISM Map of Median Incomes in the United States](Images/Choropleth.png)
+![PRISM Atlas of US](Images/8_atlas.png)
 
