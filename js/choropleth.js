@@ -21,7 +21,7 @@ var svg = d3.select("body")
   .attr("height", height);
 
 // Load in my states data!
-d3.csv("Data/Alicia/avg_income_df.csv", function (data) {
+d3.csv("../Data/Alicia/avg_income_df.csv", function (data) {
   console.log(data)
   data.forEach(d => {
     d.AverageIncome = +d["Average_Income"];
@@ -35,7 +35,7 @@ d3.csv("Data/Alicia/avg_income_df.csv", function (data) {
   var ramp = d3.scaleLinear().domain([minVal, maxVal]).range([lowColor, highColor])
 
   // Load GeoJSON data and merge with states data
-  d3.json("Data/Alicia/us-states.json", function (json) {
+  d3.json("../Data/Alicia/us-states.json", function (json) {
 
     // Loop through each state data value in the .csv file
     for (var i = 0; i < data.length; i++) {
