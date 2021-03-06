@@ -1,6 +1,8 @@
 var svgWidth = 1000;
 var svgHeight = 600;
 
+d3 = require("d3@6", "d3-sankey@0.12")
+
 const linklist = []
 const nodelist = []
 const nodelist2 = [];
