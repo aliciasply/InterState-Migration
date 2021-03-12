@@ -132,7 +132,3 @@ login.py
 config.js
 config.py
 
-# Temp
-migration_map.js
-migration_map.html
-migrationmapstyle.css
