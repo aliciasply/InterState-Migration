@@ -43,7 +43,7 @@ var mapStyleOut = {
   
 
 // Data sources
-stateBoundaries = "https://raw.githubusercontent.com/loganpowell/census-geojson/master/GeoJSON/5m/2019/state.json";
+stateBoundaries = "../static/data/state.json";
 migCsv = "../static/data/top10_in_out.csv"
 
 // var baseMaps = {
