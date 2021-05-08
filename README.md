@@ -48,3 +48,5 @@ Migration is a regular part of the American experience. While most Americans wou
 ![PRISM Map of Median Incomes in the United States](Images/Choropleth.png)
 ![PRISM Atlas of US](Images/8_atlas.png)
 
+A supplementary analysis on Tableau can be found [HERE](https://public.tableau.com/profile/alexei.flores#!/vizhome/PRISMonTableau/Story1?publish=yes)
+
